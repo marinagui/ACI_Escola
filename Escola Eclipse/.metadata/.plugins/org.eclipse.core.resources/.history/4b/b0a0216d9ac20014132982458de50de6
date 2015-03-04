@@ -1,0 +1,9 @@
+.descricao{
+    font-family: Verdana;
+    font-size: 15px;
+}
+
+.desc{
+	display:block;
+
+}

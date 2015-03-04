@@ -1,0 +1,8 @@
+INDEX VERSION 1.3+G:\PENDRIVE\COTUCA\2015\Técnico\5o Semestre\ACI\Escola Eclipse\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2196303523.index
+2131475444.index
+528229535.index
+361300489.index
+1468687442.index
+18611432.index
+1912997729.index
