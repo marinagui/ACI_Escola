@@ -2,7 +2,7 @@ drop table ACI_Aluno
 drop table ACI_Responsavel
 
 create table ACI_Responsavel ( 
-	idResponsavel int identity primary key,
+	Email varchar(100) primary key,
 	Nome varchar(50) not null,
 	Telefone varchar(15) not null,
 	Endereco varchar(100) not null
@@ -11,10 +11,11 @@ create table ACI_Responsavel (
 create table ACI_Aluno (
 	RA varchar(5) primary key, 
 	Nome varchar(50) not null,
+	Email varchar(100) not null,
 	Telefone varchar(15) not null,
 	Endereco varchar(100) not null,
-	Responsavel int not null,
-	constraint fkResp foreign key (Responsavel) references ACI_Responsavel(idResponsavel)
+	Responsavel varchar(100) not null,
+	constraint fkResp foreign key (Responsavel) references ACI_Responsavel(Email)
 )
 
 insert into ACI_Aluno values ('13185','Marina Guimarães')
