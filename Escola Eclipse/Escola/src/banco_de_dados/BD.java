@@ -16,7 +16,7 @@ public class BD
         }
         catch (ClassNotFoundException e)
         {
-            throw new Exception ("driver");
+            throw new Exception (e);
         }
 
         try
