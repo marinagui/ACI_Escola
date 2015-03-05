@@ -58,13 +58,13 @@
          Java HTTP Connector: /docs/config/http.html (blocking & non-blocking)
          Java AJP  Connector: /docs/config/ajp.html
          APR (HTTP/AJP) Connector: /docs/apr.html
-         Define a non-SSL/TLS HTTP/1.1 Connector on port 8081
+         Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
     <Connector connectionTimeout="20000" port="8081" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
-               port="8081" protocol="HTTP/1.1"
+               port="8080" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443" />
     -->
@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="G:\PENDRIVE\COTUCA\2015\Técnico\5o Semestre\ACI\Escola Eclipse\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="G:\PENDRIVE\COTUCA\2015\Técnico\5o Semestre\ACI\Escola Eclipse\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Escola" path="/Escola" reloadable="true" source="org.eclipse.jst.jee.server:Escola"/></Host>
+      <Context docBase="G:\Cotuca\5 Semestre\Aplicações Comercias Para A Internet\ACI_Escola\Escola Eclipse\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="G:\Cotuca\5 Semestre\Aplicações Comercias Para A Internet\ACI_Escola\Escola Eclipse\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Escola" path="/Escola" reloadable="true" source="org.eclipse.jst.jee.server:Escola"/></Host>
     </Engine>
   </Service>
 </Server>
