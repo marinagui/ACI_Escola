@@ -155,9 +155,9 @@ label {
     border-radius: 7px;
     }
 
-.button{
-    float: right; margin-left:15px;
-    margin:10px 55px 10px 0;
+.submit{
+    margin:0 auto;
+    margin-top:10px;
     font-weight: bold;
     line-height: 1;
     padding: 6px 10px;

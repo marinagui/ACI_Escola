@@ -1,0 +1,9 @@
+package banco_de_dados.dbo;
+
+public class Aluno {
+	private String RA,nome,email,telefone,endereco,responsavel;
+	
+	public Aluno(String RA,String nome,String email,String telefone,String endereco,String responsavel){
+		
+	}
+}

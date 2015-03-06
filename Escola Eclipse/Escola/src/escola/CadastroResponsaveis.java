@@ -31,67 +31,73 @@ public class CadastroResponsaveis extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try{
-        	if(request.getParameter("nomeResp")!=null){
-        		String nomeResp,telefoneResp,enderecoResp;
-        		nomeResp = request.getParameter("nomeResp");
-        		telefoneResp = request.getParameter("telefoneResp");
-        		enderecoResp = request.getParameter("enderecoResp");
-        		try{
-	        		BD banco = new BD("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-	        				"jdbc:sqlserver://regulus:1433;databasename=BD13185",
-	        				"BD13185", "GeorgeOrwell");
-	        		banco.execComando("insert into ACI_Responsavel values('" + nomeResp + "','"+ telefoneResp+"','"
-	        				+ enderecoResp +"')");
-        		}catch(Exception e){
-        			out.println(e.getMessage());
-        		}
+        	
             	
-            }else{
-	            out.println("<!DOCTYPE html>");
-	            out.println("<html>");
-	            out.println("<head>");
-	            out.println("<title>Servlet CadastroAlunos</title>"); 
-	            out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
-	            out.println("</head>");
-	            out.println("<body>");
-	            out.println("<div>");
+      
+        	out.println("<!DOCTYPE html>");
+	        out.println("<html>");
+	        out.println("<head>");
+	        out.println("<title>Servlet CadastroAlunos</title>"); 
+	        out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
+	        out.println("<script src='resources/scripts/script-cadastro-responsaveis.js'> </script>");
+	        out.println("</head>");
+	        out.println("<body>");
+	        out.println("<div>");
 	            
-	            out.println("<div class=\"menu-holder\"> \n" +
-	"                <ul>\n" +
-	"                    <li>\n" +
-	"                        <a href=\"index.jsp \"  id=\"home-item\"><img src=\"resources/images/home.ico\" class=\"home-image\"></a>\n" +
-	"                    </li>\n" +
-	"                    <li>\n" +
-	"                        <a href=\"CadastroAlunos\"  >Cadastro de Alunos</a>\n" +
-	"                    </li>\n" +
-	"                    <li>\n" +
-	"                        <a href=\"CadastroResponsaveis\" class=\"menu-item-selected\">Cadastro de Responsáveis</a>\n" +
-	"                    </li>\n" +
-	"                    <li>\n" +
-	"                        <a href=\"EditarAluno\" >Editar Aluno</a>\n" +
-	"                    </li>\n" +
-	"                    <li>\n" +
-	"                        <a href=\"EditarResponsavel\" >Editar Responsável</a>\n" +
-	"                    </li>\n"
+	        out.println("<div class=\"menu-holder\"> \n" +
+"                <ul>\n" +
+"                    <li>\n" +
+"                        <a href=\"index.jsp \"  id=\"home-item\"><img src=\"resources/images/home.ico\" class=\"home-image\"></a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"CadastroAlunos\"  >Cadastro de Alunos</a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"CadastroResponsaveis\" class=\"menu-item-selected\">Cadastro de Responsáveis</a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"EditarAluno\" >Editar Aluno</a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"EditarResponsavel\" >Editar Responsável</a>\n" +
+"                    </li>\n"
 	                    + "<li>\n" +
-	"                        <a href=\"index.jsp\" id=\"search-item\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
-	"                    </li>" +
-	"                </ul>\n" +
-	"            </div>");
+"                        <a href=\"index.jsp\" id=\"search-item\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
+"                    </li>" +
+"                </ul>\n" +
+"            </div>");
 	            
-	            out.println("</div>");
-	            out.println("<div class='conteudo'>");
-	            out.println("<form id='formulario' class='rounded' method='post' action='CadastroResponsaveis'>");
-	            out.println("<h2>Cadastro de Responsáveis</h2>");
-	            out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Nome completo</p></div>");
-	            out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
-	            out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>");
-	            out.println("<input type='submit' name='Submit'  class='submit' title='Submit' />");
-	            out.println("</form>");
-	            out.println("</div>");
-	            out.println("</body>");
-	            out.println("</html>");
-            }
+	        out.println("</div>");
+	        out.println("<div class='conteudo'>");
+	        out.println("<form id='formulario' class='rounded' method='post' action='CadastroResponsaveis' onsubmit='return validaResponsavel()'>");
+	        out.println("<h2>Cadastro de Responsáveis</h2>");
+	            
+	        if(request.getParameter("nomeResp")!=null){
+	        	String nomeResp,telefoneResp,enderecoResp,emailResp;
+	        	emailResp = request.getParameter("emailResp");
+	        	nomeResp = request.getParameter("nomeResp");
+	        	telefoneResp = request.getParameter("telefoneResp");
+	        	enderecoResp = request.getParameter("enderecoResp");
+	        	try{
+		        	BD banco = new BD("com.microsoft.sqlserver.jdbc.SQLServerDriver",
+		        			"jdbc:sqlserver://regulus:1433;databasename=BD13185",
+		        			"BD13185", "GeorgeOrwell");
+		        	banco.execComando("insert into ACI_Responsavel values('"+emailResp+"','" + nomeResp + "','"+ telefoneResp+"','"
+		        			+ enderecoResp +"')");
+	        	}catch(Exception e){
+	        		out.println(e.getMessage());
+	        	}
+	        }
+	        out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Insira seu email</p></div>");
+	        out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Nome completo</p></div>");
+	        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
+	        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>"); 
+	        out.println("<input type='submit' name='Submit'  class='submit' title='Submit' />");
+	        out.println("</form>");
+	        out.println("</div>");
+	        out.println("</body>");
+	        out.println("</html>");
+	        
         }finally{
             out.close();
         }

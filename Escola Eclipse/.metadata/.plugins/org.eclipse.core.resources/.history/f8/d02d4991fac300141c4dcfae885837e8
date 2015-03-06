@@ -1,0 +1,23 @@
+package banco_de_dados.dbo;
+
+public class Aluno {
+	private String RA,nome,email,telefone,endereco,responsavel;
+	
+	public Aluno(String RA,String nome,String email,String telefone,String endereco,String responsavel)throws Exception{
+		if(RA.length()> 5 || RA.length() < 5){
+			throw new Exception("RA invalido");
+		}
+		
+		
+		this.RA = RA;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.endereco = endereco;
+		this.responsavel = responsavel;
+	}
+	
+	private boolean numerico(String s){
+		
+	}
+}
