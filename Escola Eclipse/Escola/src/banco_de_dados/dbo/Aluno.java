@@ -32,4 +32,28 @@ public class Aluno {
 			return false;
 		}
 	}
+	
+	public String getRA(){
+		return this.RA;
+	}
+	
+	public String getNome(){
+		return this.nome;
+	}
+	
+	public String getEmail(){
+		return this.email;
+	}
+	
+	public String getTelefone(){
+		return this.telefone;
+	}
+	
+	public String getEndereco(){
+		return this.endereco;
+	}
+	
+	public String getResponsavel(){
+		return this.responsavel;
+	}
 }
