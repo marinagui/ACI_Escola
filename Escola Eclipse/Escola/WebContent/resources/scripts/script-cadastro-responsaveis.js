@@ -25,7 +25,7 @@ function validaResponsavel() {
 	}
 	
 	/*valida telefone*/
-    telefone = telefone.replace(\/D/g,"");
+    telefone = telefone.replace(/D/g,"");
     formulario.telefoneAluno.value = telefone;
 	if (isNaN(parseFloat(telefone))) {
        	alert('Telefone inválido');  
