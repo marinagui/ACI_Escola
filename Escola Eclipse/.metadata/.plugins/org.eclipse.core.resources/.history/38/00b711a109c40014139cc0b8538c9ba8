@@ -1,4 +1,4 @@
-function validaResponsavel(formulario) { 
+function validaResponsavel() { 
 	var email = formulario.emailResp.value;
 	var nome = formulario.nomeResp.value; 
 	var telefone = formulario.telefoneResp.value; 
@@ -7,6 +7,7 @@ function validaResponsavel(formulario) {
 	
 	if (nome == "" || telefone == "" || endereco == "") {
 		alert('Preencha todos os campos'); 
+		formulario.email.focus(); 
 		return false; 
 	}
    
@@ -14,12 +15,14 @@ function validaResponsavel(formulario) {
     var re = /^[A-Za-z]+$/;
     if (!re.test(nome)) {
        alert('Nome inválido'); 
+       formulario.email.focus(); 
 	   return false;
 	}
 
 	/*valida email*/
 	if (!validacaoEmail(email)) {
 		alert('E-mail inválido'); 
+		formulario.email.focus(); 
 		return false;
 	}
 	alert('validou email');
@@ -29,6 +32,7 @@ function validaResponsavel(formulario) {
     formulario.telefoneAluno.value = telefone;
 	if (isNaN(parseFloat(telefone))) {
        	alert('Telefone inválido'); 
+       	formulario.email.focus(); 
 	   return false;
 	}
 	alert('validou telefone');

@@ -70,7 +70,7 @@ public class CadastroResponsaveis extends HttpServlet {
 	            
 	        out.println("</div>");
 	        out.println("<div class='conteudo'>");
-	        out.println("<form id='formulario' class='rounded' method='post' action='CadastroResponsaveis' onsubmit='return validaResponsavel(this)'>");
+	        out.println("<form id='formulario' class='rounded' method='post' action='CadastroResponsaveis' onsubmit='return validaResponsavel()'>");
 	        out.println("<h2>Cadastro de Responsáveis</h2>");
 	            
 	        if(request.getParameter("nomeResp")!=null){

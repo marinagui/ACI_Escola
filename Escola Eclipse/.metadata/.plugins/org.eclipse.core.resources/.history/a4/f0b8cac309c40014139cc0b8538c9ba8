@@ -1,4 +1,4 @@
-function validaResponsavel(formulario) { 
+function validaResponsavel() { 
 	var email = formulario.emailResp.value;
 	var nome = formulario.nomeResp.value; 
 	var telefone = formulario.telefoneResp.value; 
