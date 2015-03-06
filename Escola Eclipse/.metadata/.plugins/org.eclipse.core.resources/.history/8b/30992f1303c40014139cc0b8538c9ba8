@@ -8,9 +8,7 @@ public class Responsavel {
 			throw new Exception("O telefone deve conter apenas numeros");
 		}
 		
-		if(email == null || nome == null || telefone == null || endereco == null){
-			throw new Exception("Os valores não podem ser nulos");
-		}
+		if(email == null || nome == null || telefone == null || endereco == null)
 		
 		this.email = email;
 		this.nome = nome;
@@ -26,21 +24,5 @@ public class Responsavel {
 		}catch(Exception e){
 			return false;
 		}
-	}
-	
-	public String getEmail(){
-		return this.email;
-	}
-	
-	public String getNome(){
-		return this.nome;
-	}
-	
-	public String getTelefone(){
-		return this.telefone;
-	}
-	
-	public String getEndereco(){
-		return this.endereco;
 	}
 }
