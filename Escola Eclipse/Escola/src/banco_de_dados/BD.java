@@ -62,7 +62,7 @@ public class BD
         }
         catch (SQLException e)
         {
-            throw new Exception ("execucao consulta");
+            throw new Exception (e.getMessage());
         }
 
         return resultado;

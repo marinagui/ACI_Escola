@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import banco_de_dados.BD;
+import banco_de_dados.dao.Responsaveis;
+import banco_de_dados.dbo.Responsavel;
 
 /**
  * Servlet implementation class CadastroResponsaveis
@@ -79,11 +80,9 @@ public class CadastroResponsaveis extends HttpServlet {
 	        	telefoneResp = request.getParameter("telefoneResp");
 	        	enderecoResp = request.getParameter("enderecoResp");
 	        	try{
-		        	BD banco = new BD("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-		        			"jdbc:sqlserver://regulus:1433;databasename=BD13185",
-		        			"BD13185", "GeorgeOrwell");
-		        	banco.execComando("insert into ACI_Responsavel values('"+emailResp+"','" + nomeResp + "','"+ telefoneResp+"','"
-		        			+ enderecoResp +"')");
+		        	Responsaveis resp = new Responsaveis();
+		        	Responsavel respParaAdd = new Responsavel(emailResp, nomeResp, telefoneResp, enderecoResp);
+		        	resp.inserirResponsavel(respParaAdd);
 	        	}catch(Exception e){
 	        		out.println(e.getMessage());
 	        	}
