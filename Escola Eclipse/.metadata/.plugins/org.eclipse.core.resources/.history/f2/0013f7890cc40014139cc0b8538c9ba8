@@ -50,6 +50,6 @@ public class Responsaveis {
 		String comSql = "update ACI_Responsavel set Nome='"+responsavel.getNome()+
 				"' Telefone='" + responsavel.getTelefone() + "' Endereco='" + responsavel.getEndereco()
 				+ "' were Email='"+ responsavel.getEmail() + "'";
-		this.bancoConec.execComando(comSql);
+		this.bancoConec.execComando(cmdSQL);
 	}
 }

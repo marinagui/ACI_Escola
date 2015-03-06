@@ -28,28 +28,8 @@ public class Responsaveis {
 		this.bancoConec.execComando(comSQL);
 	}
 	
-	public void removerResponsavel(String emailResponsavel) throws Exception{
+	public void removerResponsavel(String emailResponsavel){
 		ResultSet result = this.bancoConec.execConsulta("Select * from ACI_Responsavel where Email='"
 				+emailResponsavel+"'");
-		
-		if(!result.first()){
-			throw new Exception("Responsável com esse Email inexistente");
-		}
-		
-		String comSql = "delete from ACI_Responsavel were Email='"+emailResponsavel + "'";
-		this.bancoConec.execComando(comSql);
-	}
-	
-	public void editarResponsavel(Responsavel responsavel) throws Exception{
-		ResultSet result = this.bancoConec.execConsulta("Select * from ACI_Responsavel where Email='"
-				+responsavel.getEmail()+"'");
-		if(!result.first()){
-			throw new Exception("Responsavel com esse email já inexistente");
-		}
-		
-		String comSql = "update ACI_Responsavel set Nome='"+responsavel.getNome()+
-				"' Telefone='" + responsavel.getTelefone() + "' Endereco='" + responsavel.getEndereco()
-				+ "' were Email='"+ responsavel.getEmail() + "'";
-		this.bancoConec.execComando(comSql);
 	}
 }

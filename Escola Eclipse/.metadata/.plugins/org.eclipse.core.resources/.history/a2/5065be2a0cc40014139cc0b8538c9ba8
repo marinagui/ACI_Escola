@@ -46,10 +46,5 @@ public class Responsaveis {
 		if(!result.first()){
 			throw new Exception("Responsavel com esse email já inexistente");
 		}
-		
-		String comSql = "update ACI_Responsavel set Nome='"+responsavel.getNome()+
-				"' Telefone='" + responsavel.getTelefone() + "' Endereco='" + responsavel.getEndereco()
-				+ "' were Email='"+ responsavel.getEmail() + "'";
-		this.bancoConec.execComando(comSql);
 	}
 }
