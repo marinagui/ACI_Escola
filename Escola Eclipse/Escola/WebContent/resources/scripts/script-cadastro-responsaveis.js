@@ -7,30 +7,35 @@ function validaResponsavel() {
 	
 	if (nome == "" || telefone == "" || endereco == "") {
 		alert('Preencha todos os campos'); 
-		formulario.RA.focus(); 
+		formulario.email.focus(); 
 		return false; 
 	}
    
 	/*valida nome*/
     var re = /^[A-Za-z]+$/;
     if (!re.test(nome)) {
-       alert('Nome inválido');  
+       alert('Nome inválido'); 
+       formulario.email.focus(); 
 	   return false;
 	}
 
 	/*valida email*/
 	if (!validacaoEmail(email)) {
 		alert('E-mail inválido'); 
+		formulario.email.focus(); 
 		return false;
 	}
+	alert('validou email');
 	
 	/*valida telefone*/
     telefone = telefone.replace(/D/g,"");
     formulario.telefoneAluno.value = telefone;
 	if (isNaN(parseFloat(telefone))) {
-       	alert('Telefone inválido');  
+       	alert('Telefone inválido'); 
+       	formulario.email.focus(); 
 	   return false;
 	}
+	alert('validou telefone');
 
 	return true;
 	
@@ -39,7 +44,7 @@ function validaResponsavel() {
 function validacaoEmail(email) { 
 	usuario = email.value.substring(0, email.value.indexOf("@")); 
 	dominio = email.value.substring(email.value.indexOf("@")+ 1, email.value.length); 
-	if (!((usuario.length >=1) && 
+	if ((usuario.length >=1) && 
 		  (dominio.length >=3) && 
 		  (usuario.search("@")==-1) && 
 		  (dominio.search("@")==-1) && 
@@ -47,9 +52,9 @@ function validacaoEmail(email) {
 		  (dominio.search(" ")==-1) && 
 		  (dominio.search(".")!=-1) && 
 		  (dominio.indexOf(".") >=1) && 
-		  (dominio.lastIndexOf(".") < dominio.length - 1))) {  
-		return false;
+		  (dominio.lastIndexOf(".") < dominio.length - 1)) {  
+		return true;
 	} 
 
-	return true;
+	return false;
 }
