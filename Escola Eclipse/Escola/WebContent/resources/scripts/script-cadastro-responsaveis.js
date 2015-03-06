@@ -7,7 +7,7 @@ function validaResponsavel() {
 	
 	if (nome == "" || telefone == "" || endereco == "") {
 		alert('Preencha todos os campos'); 
-		formulario.email.focus(); 
+		formulario.RA.focus(); 
 		return false; 
 	}
    
