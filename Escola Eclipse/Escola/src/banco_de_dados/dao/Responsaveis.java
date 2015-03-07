@@ -3,15 +3,16 @@ package banco_de_dados.dao;
 import java.sql.ResultSet;
 
 import banco_de_dados.BD;
+import banco_de_dados.ConnectionData;
 import banco_de_dados.dbo.Responsavel;
 
 public class Responsaveis {
 	private BD bancoConec;
 	
 	public Responsaveis()throws Exception{
-		this.bancoConec = new BD("com.microsoft.sqlserver.jdbc.SQLServerDriver",
-    			"jdbc:sqlserver://regulus:1433;databasename=BD13185",
-    			"BD13185", "GeorgeOrwell");
+		this.bancoConec = new BD(ConnectionData.DRIVER,
+				ConnectionData.CONNECTION_STRING,
+				ConnectionData.USER, ConnectionData.PASSWORD);
 	}
 	
 	public void inserirResponsavel(Responsavel responsavel) throws Exception{
@@ -20,6 +21,8 @@ public class Responsaveis {
 		if(result.first()){
 			throw new Exception("Responsavel com esse email já existente");
 		}
+		
+		result.close();
 		
 		String comSQL = "insert into ACI_Responsavel values('"+
 				responsavel.getEmail()+"','"+responsavel.getNome()+
@@ -36,6 +39,8 @@ public class Responsaveis {
 			throw new Exception("Responsável com esse Email inexistente");
 		}
 		
+		result.close();
+		
 		String comSql = "delete from ACI_Responsavel were Email='"+emailResponsavel + "'";
 		this.bancoConec.execComando(comSql);
 	}
@@ -47,9 +52,21 @@ public class Responsaveis {
 			throw new Exception("Responsavel com esse email já inexistente");
 		}
 		
+		result.close();
+		
 		String comSql = "update ACI_Responsavel set Nome='"+responsavel.getNome()+
 				"' Telefone='" + responsavel.getTelefone() + "' Endereco='" + responsavel.getEndereco()
 				+ "' were Email='"+ responsavel.getEmail() + "'";
 		this.bancoConec.execComando(comSql);
+	}
+	
+	public ResultSet getResponsaveis() throws Exception{
+		ResultSet result = this.bancoConec.execConsulta("Select * from ACI_Responsavel");
+		if(result.first()){
+			result.beforeFirst();
+			return result;
+		}else{
+			return null;
+		}
 	}
 }
