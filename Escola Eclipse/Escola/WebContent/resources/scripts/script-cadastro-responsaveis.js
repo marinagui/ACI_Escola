@@ -1,3 +1,17 @@
+$(document).ready(function () {
+    $(".telefone").on('input propertychange paste', function () {
+        mask(this, "(99)99999-9999");
+    });
+    $(".telefone").on('focus', function () {
+        mask(this, "(99)9999-9999");
+    });
+});
+
+String.prototype.replaceAll = function(str1, str2, ignore) 
+{
+	return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+}
+
 function validaResponsavel(formulario) { 
 	var email = formulario.emailResp.value;
 	var nome = formulario.nomeResp.value; 
@@ -25,14 +39,26 @@ function validaResponsavel(formulario) {
 	alert('validou email');
 	
 	/*valida telefone*/
-    telefone = telefone.replace(/D/g,"");
-    formulario.telefoneAluno.value = telefone;
+	
+
+    telefone = telefone.replaceAll("(","");
+    telefone =  telefone.replaceAll(")","");
+    telefone = telefone.replaceAll("-","");
+    
+    alert(telefone.length);
+    
 	if (isNaN(parseFloat(telefone))) {
-       	alert('Telefone inválido'); 
+       alert('Telefone inválido'); 
 	   return false;
 	}
+	
+	if(telefone.length < 10){
+		alert('Telefone inválido'); 
+		return false;
+	}
+	
 	alert('validou telefone');
-
+	
 	return true;
 	
 }
