@@ -3,7 +3,7 @@ $(document).ready(function () {
         mask(this, "(99)99999-9999");
     });
     $(".telefone").on('focus', function () {
-        mask(this, "(99)9999-9999");
+        mask(this, "(99)99999-9999");
     });
 });
 
