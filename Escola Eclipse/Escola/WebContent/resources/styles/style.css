@@ -98,10 +98,11 @@ span{
 
 #formulario {
  
-    width: 500px;
+    width: 550px;
     padding: 20px;
     background: #f0f0f0;
-    overflow:auto;
+    margin:0 auto;
+    /*overflow:auto;*/
  
     border: 1px solid #cccccc;
     -moz-border-radius: 7px;
@@ -123,7 +124,7 @@ label {
     font-weight: bold;
     margin-right:10px;
     text-align: right;
-    width: 120px;
+    width: 180px;
     line-height: 25px;
     font-size: 15px;
     }
@@ -186,5 +187,13 @@ label {
     -webkit-box-shadow: inset 0 1px 0 0 #aec3e5;
     box-shadow: inset 0 1px 0 0 #aec3e5;
  
+    }
+    
+.mensagem{
+	font-weight: bold;
+	font-family: "Verdana";
+	color:red;
+	text-shadow: 0 -1px 1px #64799e;
+	margin-bottom: 20px;
     }
 

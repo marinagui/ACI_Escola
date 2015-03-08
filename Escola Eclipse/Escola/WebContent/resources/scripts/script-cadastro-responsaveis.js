@@ -26,7 +26,7 @@ function validaResponsavel(formulario) {
    
 	/*valida nome*/
     var re = /[a-zA-Z ]*/;
-    if (!re.test(nome)) {
+    if (!re.test(nome) || nome.length < 4) {
        alert('Nome inválido'); 
 	   return false;
 	}
@@ -36,7 +36,12 @@ function validaResponsavel(formulario) {
 		alert('E-mail inválido'); 
 		return false;
 	}
-	alert('validou email');
+	
+	/*valida endereco*/
+	if(endereco.length<5){
+		alert('Endereço inválido');
+		return false;
+	}
 	
 	/*valida telefone*/
 	
@@ -45,7 +50,6 @@ function validaResponsavel(formulario) {
     telefone =  telefone.replaceAll(")","");
     telefone = telefone.replaceAll("-","");
     
-    alert(telefone.length);
     
 	if (isNaN(parseFloat(telefone))) {
        alert('Telefone inválido'); 
@@ -56,9 +60,7 @@ function validaResponsavel(formulario) {
 		alert('Telefone inválido'); 
 		return false;
 	}
-	
-	alert('validou telefone');
-	
+		
 	return true;
 	
 }
@@ -80,3 +82,4 @@ function validacaoEmail(email) {
 
 	return false;
 }
+

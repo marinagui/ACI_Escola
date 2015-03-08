@@ -21,7 +21,7 @@ public class Responsavel {
 	
 	private boolean numerico(final String s){
 		try{
-			Integer.parseInt(s);
+			Float.valueOf(s);
 			return true;
 		}catch(Exception e){
 			return false;

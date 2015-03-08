@@ -84,20 +84,28 @@ public class CadastroResponsaveis extends HttpServlet {
 	        	telefoneResp = telefoneResp.replace("(", "");
 	        	telefoneResp = telefoneResp.replace(")", "");
 	        	telefoneResp = telefoneResp.replace("-", "");
-	        	out.println(telefoneResp);
 	        	try{
 		        	Responsaveis resp = new Responsaveis();
 		        	Responsavel respParaAdd = new Responsavel(emailResp, nomeResp, telefoneResp, enderecoResp);
 		        	resp.inserirResponsavel(respParaAdd);
+		        	
+		        	out.println("<div class='mensagem'>O Responsável Foi Inserido Com Sucesso</div>");
+		        	out.println("<input type='submit' name='Submit'  class='submit' title='Submit' value='Voltar'/>");
 	        	}catch(Exception e){
-	        		out.println(e.getMessage());
+	        		out.println("<div class='mensagem'>"+e.getMessage()+"</div>");
+	        		out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' "+"value='"+ emailResp  +"' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Insira seu email</p></div>");
+			        out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' "+"value='"+ nomeResp  +"' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Nome completo</p></div>");
+			        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' "+"value='"+ telefoneResp  +"' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
+			        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' "+"value='"+ enderecoResp  +"' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>"); 
+			        out.println("<input type='submit' name='Submit'  class='submit' title='Submit' />");
 	        	}
+	        }else{
+		        out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Insira seu email</p></div>");
+		        out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Nome completo</p></div>");
+		        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
+		        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>"); 
+		        out.println("<input type='submit' name='Submit'  class='submit' title='Submit' />");
 	        }
-	        out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Insira seu email</p></div>");
-	        out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Nome completo</p></div>");
-	        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
-	        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>"); 
-	        out.println("<input type='submit' name='Submit'  class='submit' title='Submit' />");
 	        out.println("</form>");
 	        out.println("</div>");
 	        out.println("</body>");

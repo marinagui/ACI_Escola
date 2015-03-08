@@ -64,7 +64,7 @@ public class CadastroAlunos extends HttpServlet {
 "                    </li>" +
 "                </ul>\n" +
 "            </div>");
-            out.println("<div class='conteudo'");
+            out.println("<div class='conteudo'>");
             out.println("<form id='formulario' class='rounded' method='post' action='CadastroAlunos' onsubmit='return validaAluno(this)'>");
             out.println("<h2>Cadastro de Alunos</h2>");
             out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Insira seu RA</p></div>");
