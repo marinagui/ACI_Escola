@@ -40,6 +40,8 @@ public class CadastroResponsaveis extends HttpServlet {
 	        out.println("<head>");
 	        out.println("<title>Servlet CadastroAlunos</title>"); 
 	        out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
+	        out.println("<script src='resources/scripts/script-jquery.js'> </script>");
+	        out.println("<script src='resources/scripts/script-mascara.js'> </script>");
 	        out.println("<script src='resources/scripts/script-cadastro-responsaveis.js'> </script>");
 	        out.println("</head>");
 	        out.println("<body>");
@@ -79,6 +81,9 @@ public class CadastroResponsaveis extends HttpServlet {
 	        	nomeResp = request.getParameter("nomeResp");
 	        	telefoneResp = request.getParameter("telefoneResp");
 	        	enderecoResp = request.getParameter("enderecoResp");
+	        	telefoneResp = telefoneResp.replace("(", "");
+	        	telefoneResp = telefoneResp.replace(")", "");
+	        	telefoneResp = telefoneResp.replace("-", "");
 	        	try{
 		        	Responsaveis resp = new Responsaveis();
 		        	Responsavel respParaAdd = new Responsavel(emailResp, nomeResp, telefoneResp, enderecoResp);
