@@ -25,9 +25,8 @@ function validaResponsavel(formulario) {
 	}
    
 	/*valida nome*/
-	
-    var re = /[a-zA-Z ]*/;
-    if (!re.test(nome)) {
+    var re = /^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/;
+    if (re.test(nome)) {
        alert('Nome inválido'); 
 	   return false;
 	}

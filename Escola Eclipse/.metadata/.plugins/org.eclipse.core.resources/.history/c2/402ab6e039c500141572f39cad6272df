@@ -1,27 +1,4 @@
-$(document).ready(function () {
-    $(".ra").on('input propertychange paste', function () {
-        mask(this, "99999");
-    });
-    $(".ra").on('focus', function () {
-        mask(this, "99999");
-    });
-});
-
-$(document).ready(function () {
-    $(".telefone").on('input propertychange paste', function () {
-        mask(this, "(99)99999-9999");
-    });
-    $(".telefone").on('focus', function () {
-        mask(this, "(99)99999-9999");
-    });
-});
-
-String.prototype.replaceAll = function(str1, str2, ignore) 
-{
-	return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
-}
-
-function validaAluno(formulario) { 
+function validaAluno() { 
 	var RA = formulario.RA.value; 
 	var nome = formulario.nomeAluno.value; 
 	var email = formulario.emailAluno.value;
@@ -43,7 +20,7 @@ function validaAluno(formulario) {
 	}
    
 	/*valida nome*/
-    var re = /[a-zA-Z ]*/;
+    var re = /^[A-Za-z]+$/;
     if (!re.test(nome)) {
        alert('Nome inválido');  
 	   return false;
@@ -60,27 +37,16 @@ function validaAluno(formulario) {
 	}
 
 
-	/*valida telefone*/
 	
-    telefone = telefone.replaceAll("(","");
-    telefone =  telefone.replaceAll(")","");
-    telefone = telefone.replaceAll("-","");
-    
-    alert(telefone.length);
-    
+	/*valida telefone*/
+    telefone = telefone.replace(/D/g,"");
+    formulario.telefoneAluno.value = telefone;
 	if (isNaN(parseFloat(telefone))) {
-       alert('Telefone inválido'); 
+       	alert('Telefone inválido');  
 	   return false;
 	}
+
 	
-	if(telefone.length < 10){
-		alert('Telefone inválido'); 
-		return false;
-	}
-	
-	alert('validou telefone');
-	
-	return true;
 }
 
 function validacaoEmail(email) { 
