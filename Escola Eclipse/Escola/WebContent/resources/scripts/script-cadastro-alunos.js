@@ -1,4 +1,27 @@
-function validaAluno() { 
+$(document).ready(function () {
+    $(".ra").on('input propertychange paste', function () {
+        mask(this, "99999");
+    });
+    $(".ra").on('focus', function () {
+        mask(this, "99999");
+    });
+});
+
+$(document).ready(function () {
+    $(".telefone").on('input propertychange paste', function () {
+        mask(this, "(99)99999-9999");
+    });
+    $(".telefone").on('focus', function () {
+        mask(this, "(99)99999-9999");
+    });
+});
+
+String.prototype.replaceAll = function(str1, str2, ignore) 
+{
+	return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+}
+
+function validaAluno(formulario) { 
 	var RA = formulario.RA.value; 
 	var nome = formulario.nomeAluno.value; 
 	var email = formulario.emailAluno.value;
@@ -20,7 +43,7 @@ function validaAluno() {
 	}
    
 	/*valida nome*/
-    var re = /^[A-Za-z]+$/;
+    var re = /[a-zA-Z ]*/;
     if (!re.test(nome)) {
        alert('Nome inválido');  
 	   return false;
