@@ -57,9 +57,9 @@ public class Alunos {
 		result.close();
 				
 		// edita
-		comSql = "update ACI_Aluno set Nome = '" + aluno.getNome() + "' Email='" + aluno.getEmail()+
-				"' Telefone='"+aluno.getTelefone()+"' Endereco='"+aluno.getEndereco()+
-				"' Responsavel='"+aluno.getResponsavel()+"'"; 
+		comSql = "update ACI_Aluno set Nome = '" + aluno.getNome() + "', Email='" + aluno.getEmail()+
+				"', Telefone='"+aluno.getTelefone()+"', Endereco='"+aluno.getEndereco()+
+				"', Responsavel='"+aluno.getResponsavel()+"'"; 
 		this.bancoConec.execComando(comSql);
 	}
 	
