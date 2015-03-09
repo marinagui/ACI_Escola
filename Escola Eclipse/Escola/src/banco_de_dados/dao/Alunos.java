@@ -43,8 +43,8 @@ public class Alunos {
 		// checa se o aluno já foi cadastrado
 		String comSql = "select * from ACI_Aluno where RA='" + aluno.getRA() + "'";
 		ResultSet result = this.bancoConec.execConsulta(comSql);
-		if(result.first()){
-			throw new Exception("Aluno Com Esse RA Já Existente");
+		if(!result.first()){
+			throw new Exception("Aluno Com Esse RA Não Existente");
 		}
 		result.close();
 				
@@ -69,6 +69,21 @@ public class Alunos {
 		if(result.first()){
 			result.beforeFirst();
 			return result;
+		}else{
+			result.close();
+			return null;
+		}
+	}
+	
+	public Aluno getAluno(String ra)throws Exception{
+		String comSql = "select * from ACI_Aluno where ra='"+ra+"'";
+		ResultSet result = this.bancoConec.execConsulta(comSql);
+		if(result.first()){
+			Aluno aluno = new Aluno(result.getString("RA"),
+					result.getString("nome"),result.getString("Email"), result.getString("telefone")
+					, result.getString("Endereco"),result.getString("Responsavel"));
+			result.close();
+			return aluno;
 		}else{
 			result.close();
 			return null;
