@@ -32,9 +32,6 @@ public class CadastroResponsaveis extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try{
-        	
-            	
-      
         	out.println("<!DOCTYPE html>");
 	        out.println("<html>");
 	        out.println("<head>");
