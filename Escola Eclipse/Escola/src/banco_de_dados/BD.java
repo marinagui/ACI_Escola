@@ -48,7 +48,7 @@ public class BD
         }
         catch (SQLException e)
         {
-            throw new Exception ("execucao comando");
+            throw new Exception(e.getMessage());
         }
     }
 

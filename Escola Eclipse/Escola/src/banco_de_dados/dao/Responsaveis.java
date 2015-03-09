@@ -55,8 +55,8 @@ public class Responsaveis {
 		result.close();
 		
 		String comSql = "update ACI_Responsavel set Nome='"+responsavel.getNome()+
-				"' Telefone='" + responsavel.getTelefone() + "' Endereco='" + responsavel.getEndereco()
-				+ "' were Email='"+ responsavel.getEmail() + "'";
+				"', Telefone='" + responsavel.getTelefone() + "', Endereco='" + responsavel.getEndereco()
+				+ "' where Email='"+ responsavel.getEmail() + "'";
 		this.bancoConec.execComando(comSql);
 	}
 	
@@ -65,6 +65,17 @@ public class Responsaveis {
 		if(result.first()){
 			result.beforeFirst();
 			return result;
+		}else{
+			return null;
+		}
+	}
+	
+	public Responsavel getResponsavel(String email) throws Exception{
+		ResultSet result = this.bancoConec.execConsulta("Select * from ACI_Responsavel where Email='"+email+"'");
+		if(result.first()){
+			Responsavel responsavel = new Responsavel(result.getString("Email"), result.getString("Nome"),result.getString("Telefone")
+					,result.getString("Endereco"));
+			return responsavel;
 		}else{
 			return null;
 		}
