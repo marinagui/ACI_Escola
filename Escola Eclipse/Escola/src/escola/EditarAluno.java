@@ -69,7 +69,7 @@ public class EditarAluno extends HttpServlet {
 "            </div>");
             out.println("<div class='conteudo'>");
             out.println("<form id='formulario' class='rounded' method='post' action='EditarAluno' onsubmit='return validaAluno(this)'>");
-            out.println("<h2>Cadastro de Alunos</h2>");
+            out.println("<h2>Edição de Alunos</h2>");
             if(request.getParameter("ra") != null){
             	if(request.getParameter("nomeAluno") != null){
             		String ra, nomeAluno,emailAluno,telefoneAluno,enderecoAluno,emailResp;

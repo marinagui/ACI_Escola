@@ -63,32 +63,14 @@ public class Busca extends HttpServlet {
             
 	        out.println("<div class='conteudo'>");
             
-            out.println("<table>"+
-"			<thead>"+
-"				<tr>"+
-"					<th>Coluna1</th>"+
-"        			<th>Coluna2</th>"+
-"       			<th>Coluna3</th>"+
-"        			<th>Coluna4</th>"+
-"				</tr>"+
-"			</thead>"+
-"			<tbody>"+
-"				<tr>"+
-"					<td>a</td>"+
-"					<td>b</td>"+
-"					<td>c</td>"+
-"					<td>d</td>"+
-"				</tr>"+
-"				<tr>"+
-"					<td>e</td>"+
-"					<td>f</td>"+
-"					<td>g</td>"+
-"					<td>h</td>"+
-"				</tr>"+
-"			</tbody>"+
-"		</table>");
+	        out.println("<form id='formulario' class='rounded' method='post' action='CadastroResponsaveis' onsubmit='return validaResponsavel(this)'>");
+	       
+	        
+	        out.println("<div class='field'><label for='tipoBusca'>Tipo de Busca:</label><select class='input' name='opcao'><option value='0'>Aluno</option><option value='1'>Responsável</option></select> <p class='hint'>Selecione o Tipo de Busca Que Você Deseja</p></div>");
+            out.println("<input type='submit' name='Submit'  class='submit' value='Enviar' />");
+	        
             
-	        out.println("</div>");
+            out.println("</form>");
             
             out.println("</div>");
             out.println("</body>");
