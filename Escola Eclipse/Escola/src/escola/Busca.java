@@ -53,10 +53,10 @@ public class Busca extends HttpServlet {
 "                        <a href=\"EditarAluno\" >Editar Aluno</a>\n" +
 "                    </li>\n" +
 "                    <li>\n" +
-"                        <a href=\"EditarResponsavel\" class=\"menu-item-selected\">Editar Responsável</a>\n" +
+"                        <a href=\"EditarResponsavel\">Editar Responsável</a>\n" +
 "                    </li>\n"
                     + "<li>\n" +
-"                        <a href=\"index.jsp\" id=\"search-item\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
+"                        <a href=\"Busca\" id=\"search-item\" class=\"menu-item-selected\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
 "                    </li>" +
 "                </ul>\n" +
 "            </div>");

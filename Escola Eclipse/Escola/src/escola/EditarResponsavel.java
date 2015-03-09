@@ -62,7 +62,7 @@ public class EditarResponsavel extends HttpServlet {
 "                        <a href=\"EditarResponsavel\" class=\"menu-item-selected\">Editar Responsável</a>\n" +
 "                    </li>\n"
 	                    + "<li>\n" +
-"                        <a href=\"index.jsp\" id=\"search-item\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
+"                        <a href=\"Busca\" id=\"search-item\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
 "                    </li>" +
 "                </ul>\n" +
 "            </div>");
