@@ -13,8 +13,7 @@ public class Aluno {
 		}
 		if(!numerico(telefone)){
 			throw new Exception("O telefone deve conter apenas numeros");
-		}
-		
+		}		
 		
 		this.RA = RA;
 		this.nome = nome;

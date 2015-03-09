@@ -8,7 +8,7 @@ import banco_de_dados.dbo.Aluno;
 
 public class Alunos {
 	
-	BD bancoConec;
+	private BD bancoConec;
 	
 	public Alunos()throws Exception{
 		this.bancoConec = new BD(ConnectionData.DRIVER,
@@ -16,7 +16,7 @@ public class Alunos {
 				ConnectionData.USER, ConnectionData.PASSWORD);
 	}
 	
-	public void incluirAluno(Aluno aluno) throws Exception{
+	public void inserirAluno(Aluno aluno) throws Exception{
 		// checa se o aluno já foi cadastrado
 		String comSql = "select * from ACI_Aluno where RA='" + aluno.getRA() + "'";
 		ResultSet result = this.bancoConec.execConsulta(comSql);
@@ -26,7 +26,7 @@ public class Alunos {
 		result.close();
 		
 		// checa se o responsavel já foi cadastrado
-		comSql = "select * form ACI_Responsavel where Email='" + aluno.getResponsavel() +"'";
+		comSql = "select * from ACI_Responsavel where Email='" + aluno.getResponsavel() +"'";
 		result = this.bancoConec.execConsulta(comSql);
 		if(!result.first()){
 			throw new Exception("Responsável Não Cadastrado");
@@ -49,7 +49,7 @@ public class Alunos {
 		result.close();
 				
 		// checa se o responsavel já foi cadastrado
-		comSql = "select * form ACI_Responsavel where Email='" + aluno.getResponsavel() +"'";
+		comSql = "select * from ACI_Responsavel where Email='" + aluno.getResponsavel() +"'";
 		result = this.bancoConec.execConsulta(comSql);
 		if(!result.first()){
 			throw new Exception("Responsável Não Cadastrado");
