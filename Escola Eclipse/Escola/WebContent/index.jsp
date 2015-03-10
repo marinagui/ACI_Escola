@@ -28,6 +28,9 @@
                         <a href="EditarResponsavel">Editar Responsável</a>
                     </li>
                     <li>
+                    	<a href="Remover">Remover</a>
+                    </li>
+                    <li>
                         <a href="Busca" id="search-item"><img src="resources/images/search-item.png" class="search-image"></a>
                     </li>
                     

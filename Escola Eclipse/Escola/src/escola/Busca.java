@@ -54,7 +54,9 @@ public class Busca extends HttpServlet {
 "                    </li>\n" +
 "                    <li>\n" +
 "                        <a href=\"EditarResponsavel\">Editar Responsável</a>\n" +
-"                    </li>\n"
+"                    </li>\n"+"<li>"+
+                    	"<a href='Remover'>Remover</a>"+
+                    "</li>"
                     + "<li>\n" +
 "                        <a href=\"Busca\" id=\"search-item\" class=\"menu-item-selected\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
 "                    </li>" +

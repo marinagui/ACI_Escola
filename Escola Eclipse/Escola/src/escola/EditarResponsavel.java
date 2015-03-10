@@ -60,7 +60,9 @@ public class EditarResponsavel extends HttpServlet {
 "                    </li>\n" +
 "                    <li>\n" +
 "                        <a href=\"EditarResponsavel\" class=\"menu-item-selected\">Editar Responsável</a>\n" +
-"                    </li>\n"
+"                    </li>\n"+"<li>"+
+						"<a href='Remover'>Remover</a>"+
+					"</li>"
 	                    + "<li>\n" +
 "                        <a href=\"Busca\" id=\"search-item\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
 "                    </li>" +
