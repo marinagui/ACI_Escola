@@ -32,7 +32,7 @@ public class Busca extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Busca</title>"); 
+            out.println("<title>Servlet Busca</title>"); 
             out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
             out.println("</head>");
             out.println("<body>");

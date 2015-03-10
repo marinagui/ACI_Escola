@@ -35,7 +35,7 @@ public class CadastroResponsaveis extends HttpServlet {
         	out.println("<!DOCTYPE html>");
 	        out.println("<html>");
 	        out.println("<head>");
-	        out.println("<title>Cadastro de Responsáveis</title>"); 
+	        out.println("<title>Cadastro de Alunos</title>"); 
 	        out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
 	        out.println("<script src='resources/scripts/jquery.js'> </script>");
 	        out.println("<script src='resources/scripts/script-mascara.js'> </script>");

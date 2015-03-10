@@ -35,7 +35,7 @@ public class EditarAluno extends HttpServlet {
         	out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Edição de Alunos</title>"); 
+            out.println("<title>Servlet CadastroAlunos</title>"); 
             out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
             out.println("<link rel=\"stylesheet\" href=\"resources/styles/style-cadastro-alunos.css\" type=\"text/css\"/>");
 	        out.println("<script src='resources/scripts/jquery.js'> </script>");
