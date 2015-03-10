@@ -4,3 +4,4 @@
 1425558113827	Move 'lib' to 'resources'
 1425643834717	Rename package 'dao'
 1425643855490	Rename package 'dbo'
+1425767988735	Rename type 'ConnectionString'

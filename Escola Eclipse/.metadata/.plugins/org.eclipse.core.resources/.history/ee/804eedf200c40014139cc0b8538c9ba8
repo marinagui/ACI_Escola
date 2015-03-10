@@ -1,0 +1,9 @@
+package banco_de_dados.dbo;
+
+public class Responsavel {
+	private String email, nome, telefone,endereco;
+	
+	public Responsavel(String email, String nome, String telefone, String endereco){
+		
+	}
+}

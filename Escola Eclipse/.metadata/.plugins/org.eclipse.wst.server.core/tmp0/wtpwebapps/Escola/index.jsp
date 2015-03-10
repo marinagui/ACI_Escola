@@ -28,7 +28,7 @@
                         <a href="EditarResponsavel">Editar Responsável</a>
                     </li>
                     <li>
-                        <a href="index.jsp" id="search-item"><img src="resources/images/search-item.png" class="search-image"></a>
+                        <a href="Busca" id="search-item"><img src="resources/images/search-item.png" class="search-image"></a>
                     </li>
                     
                 </ul>

@@ -1,4 +1,18 @@
-function validaResponsavel() { 
+$(document).ready(function () {
+    $(".telefone").on('input propertychange paste', function () {
+        mask(this, "(99)99999-9999");
+    });
+    $(".telefone").on('focus', function () {
+        mask(this, "(99)99999-9999");
+    });
+});
+
+String.prototype.replaceAll = function(str1, str2, ignore) 
+{
+	return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
+}
+
+function validaResponsavel(formulario) { 
 	var email = formulario.emailResp.value;
 	var nome = formulario.nomeResp.value; 
 	var telefone = formulario.telefoneResp.value; 
@@ -7,14 +21,13 @@ function validaResponsavel() {
 	
 	if (nome == "" || telefone == "" || endereco == "") {
 		alert('Preencha todos os campos'); 
-		formulario.RA.focus(); 
 		return false; 
 	}
    
 	/*valida nome*/
-    var re = /^[A-Za-z]+$/;
-    if (!re.test(nome)) {
-       alert('Nome inválido');  
+    var re = /[a-zA-Z ]*/;
+    if (!re.test(nome) || nome.length < 4) {
+       alert('Nome inválido'); 
 	   return false;
 	}
 
@@ -24,22 +37,38 @@ function validaResponsavel() {
 		return false;
 	}
 	
+	/*valida endereco*/
+	if(endereco.length<5){
+		alert('Endereço inválido');
+		return false;
+	}
+	
 	/*valida telefone*/
-    telefone = telefone.replace(\/D/g,"");
-    formulario.telefoneAluno.value = telefone;
+	
+
+    telefone = telefone.replaceAll("(","");
+    telefone =  telefone.replaceAll(")","");
+    telefone = telefone.replaceAll("-","");
+    
+    
 	if (isNaN(parseFloat(telefone))) {
-       	alert('Telefone inválido');  
+       alert('Telefone inválido'); 
 	   return false;
 	}
-
+	
+	if(telefone.length < 10){
+		alert('Telefone inválido'); 
+		return false;
+	}
+		
 	return true;
 	
 }
 
 function validacaoEmail(email) { 
-	usuario = email.value.substring(0, email.value.indexOf("@")); 
-	dominio = email.value.substring(email.value.indexOf("@")+ 1, email.value.length); 
-	if (!((usuario.length >=1) && 
+	usuario = email.substring(0, email.indexOf("@")); 
+	dominio = email.substring(email.indexOf("@")+ 1, email.length); 
+	if ((usuario.length >=1) && 
 		  (dominio.length >=3) && 
 		  (usuario.search("@")==-1) && 
 		  (dominio.search("@")==-1) && 
@@ -47,9 +76,10 @@ function validacaoEmail(email) {
 		  (dominio.search(" ")==-1) && 
 		  (dominio.search(".")!=-1) && 
 		  (dominio.indexOf(".") >=1) && 
-		  (dominio.lastIndexOf(".") < dominio.length - 1))) {  
-		return false;
+		  (dominio.lastIndexOf(".") < dominio.length - 1)) {  
+		return true;
 	} 
 
-	return true;
+	return false;
 }
+

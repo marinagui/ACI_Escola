@@ -1,0 +1,8 @@
+package banco_de_dados;
+
+public class ConnectionData {
+	public static String CONNECTION_STRING = "jdbc:sqlserver://regulus:1433;databasename=BD13185"; 
+	public static String DIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver"; 
+	public static String PASSWORD = "GeorgeOrwell";
+	public static String USER = "BD13185";
+}

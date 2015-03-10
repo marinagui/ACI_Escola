@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="banco_de_dados.dbo.Aluno"/>
 <fullyQualifiedTypeName name="banco_de_dados.BD"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="banco_de_dados.dao.Responsaveis"/>
+<fullyQualifiedTypeName name="banco_de_dados.dbo.Responsavel"/>
+<fullyQualifiedTypeName name="banco_de_dados.dao.Alunos"/>
 </qualifiedTypeNameHistroy>
