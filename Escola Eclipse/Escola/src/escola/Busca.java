@@ -63,12 +63,31 @@ public class Busca extends HttpServlet {
             
 	        out.println("<div class='conteudo'>");
             
-	        out.println("<form id='formulario' class='rounded' method='post' action='CadastroResponsaveis' onsubmit='return validaResponsavel(this)'>");
+	        out.println("<form id='formulario' class='rounded' method='post' action='Busca' onsubmit='return validaResponsavel(this)'>");
 	       
-	        
-	        out.println("<div class='field'><label for='tipoBusca'>Tipo de Busca:</label><select class='input' name='opcao'><option value='0'>Aluno</option><option value='1'>Responsável</option></select> <p class='hint'>Selecione o Tipo de Busca Que Você Deseja</p></div>");
-            out.println("<input type='submit' name='Submit'  class='submit' value='Enviar' />");
-	        
+	        if(request.getParameter("opcao")!=null){
+	        	int opcao = Integer.parseInt(request.getParameter("opcao"));
+	        	if(opcao == 0){
+	        		out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Por RA</p></div>");
+		            out.println("<div class='field'><label for='nomeAluno'>Nome do aluno:</label><input type='text' class='input' name='nomeAluno' id='nomeAluno' maxlength='50'/><p class='hint'>Por Nome</p></div>");
+		            out.println("<div class='field'><label for='emailAluno'>Email:</label><input type='text' class='input' name='emailAluno' id='emailAluno' maxlength='100'/><p class='hint'>Por Email</p></div>");
+		            out.println("<div class='field'><label for='telefoneAluno'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneAluno' id='telefoneAluno' maxlength='15'/><p class='hint'>Por Telefone</p></div>");
+		            out.println("<div class='field'><label for='enderecoAluno'>Endereço:</label><input type='text' class='input' name='enderecoAluno' id='enderecoAluno' maxlength='100'/><p class='hint'>Por Endereço</p></div>");
+		            out.println("<div class='field'><label for='emailResp'>Email do Responsável:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Por Responsável</p></div>");
+		            out.println("<input type='submit' name='Submit'  class='submit' value='Buscar' />");
+			        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
+	        	}else{
+	        		out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Por Email</p></div>");
+			        out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Por Nome</p></div>");
+			        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Por Telefone</p></div>");
+			        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Por Endereço</p></div>"); 
+			        out.println("<input type='submit' name='Submit'  class='submit' value='Buscar' />");
+			        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
+	        	}
+	        }else{
+		        out.println("<div class='field'><label for='tipoBusca'>Tipo de Busca:</label><select class='input' name='opcao'><option value='0'>Aluno</option><option value='1'>Responsável</option></select> <p class='hint'>Selecione o Tipo de Busca Que Você Deseja</p></div>");
+	            out.println("<input type='submit' name='Submit'  class='submit' value='Enviar' />");
+	        }
             
             out.println("</form>");
             

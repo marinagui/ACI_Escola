@@ -96,6 +96,7 @@ public class EditarResponsavel extends HttpServlet {
 				        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' "+"value='"+ telefoneResp  +"' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
 				        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' "+"value='"+ enderecoResp  +"' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>"); 
 				        out.println("<input type='submit' name='Submit' value='Editar Responsavel' class='submit' title='Submit' />");
+				        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('EditarResponsavel');\"/>");
 		        	}
 	        	}else{
 	        		
@@ -114,6 +115,7 @@ public class EditarResponsavel extends HttpServlet {
 				        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' "+"value='"+ responsavelParaEditar.getTelefone()  +"' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
 				        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' "+"value='"+ responsavelParaEditar.getEndereco()  +"' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>"); 
 				        out.println("<input type='submit' name='Submit' value='Editar Responsavel'  class='submit' title='Submit' />");
+				        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('EditarResponsavel');\"/>");
 	        		}else{
 	        			out.println("<div class='mensagem'>E-mail Não Encontrado</div>");
 	        			out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Insira seu email</p></div>");

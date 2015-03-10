@@ -98,6 +98,7 @@ public class EditarAluno extends HttpServlet {
                         out.println("<div class='field'><label for='enderecoAluno'>Endereço:</label><input type='text' class='input' "+" value='"+enderecoAluno+"' " +"name='enderecoAluno' id='enderecoAluno' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>");
                         out.println("<div class='field'><label for='emailResp'>Email do Responsável:</label><input type='text' class='input'"+" value='"+emailResp+"' " +" name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Insira o email de seu responsável</p></div>");
                         out.println("<input type='submit' name='Submit'  class='submit' value='Editar Aluno' />");
+                        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('EditarAluno');\"/>");
                 	}
             	}else{
             		Alunos alunos;
@@ -112,6 +113,7 @@ public class EditarAluno extends HttpServlet {
                             out.println("<div class='field'><label for='enderecoAluno'>Endereço:</label><input type='text' class='input' "+" value='"+alunoParaEdicao.getEndereco()+"' " +"name='enderecoAluno' id='enderecoAluno' maxlength='100'/><p class='hint'>Insira seu endereço</p></div>");
                             out.println("<div class='field'><label for='emailResp'>Email do Responsável:</label><input type='text' class='input'"+" value='"+alunoParaEdicao.getResponsavel()+"' " +" name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Insira o email de seu responsável</p></div>");
                             out.println("<input type='submit' name='Submit'  class='submit' value='Editar Aluno' />");
+                            out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('EditarAluno');\"/>");
             			}else{
             				out.println("<div class='mensagem'>RA Não Encontrado</div>");
             				out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Insira seu RA</p></div>");

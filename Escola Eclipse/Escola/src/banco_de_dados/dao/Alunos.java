@@ -89,4 +89,8 @@ public class Alunos {
 			return null;
 		}
 	}
+	
+	public Aluno[] buscarAluno(String RA, String nome, String email, String telefone, String endereco, String responsavel){
+		return null;
+	}
 }

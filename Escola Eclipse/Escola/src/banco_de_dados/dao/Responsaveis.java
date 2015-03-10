@@ -80,4 +80,8 @@ public class Responsaveis {
 			return null;
 		}
 	}
+	
+	public Responsavel[] buscarResponsavel(String email, String nome, String telefone, String endereço)throws Exception{
+		return null;
+	}
 }
