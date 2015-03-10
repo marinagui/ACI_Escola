@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import banco_de_dados.dao.Alunos;
+
 /**
  * Servlet implementation class Remover
  */
@@ -67,9 +69,38 @@ public class Remover extends HttpServlet {
 	            
 	        out.println("</div>");
 	        out.println("<div class='conteudo'>");
-	        out.println("<form id='formulario' class='rounded' method='post' action='EditarResponsavel' onsubmit='return validaResponsavel(this)'>");
+	        out.println("<form id='formulario' class='rounded' method='post' action='Remover' onsubmit='return validaResponsavel(this)'>");
 	        out.println("<h2>Edição de Responsáveis</h2>");
+	        
+	        if(request.getParameter("ra") != null){
+	        	try{
+	        		Alunos alunos = new Alunos();
+	        		alunos.removerAluno(request.getParameter("ra"));
+	        		out.println("<div class='mensagem'>O Aluno For Excluido Com Sucesso</div>");
+                    out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Remover');\"/>");
+	        	}catch(Exception e){
+	        		out.println("<div class='mensagem'>" +e.getMessage()+"</div>");
+	        		out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Insira o RA</p></div>");
+                    out.println("<input type='submit' name='Submit'  class='submit' value='Remover Aluno' />");
+                    out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Remover');\"/>");
+	        	}
+	        }else if(request.getParameter("opcao") != null){
+	        	int opcao = Integer.parseInt(request.getParameter("opcao"));
+	        	if(opcao == 0){
+	        		out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Insira o RA</p></div>");
+                    out.println("<input type='submit' name='Submit'  class='submit' value='Remover Aluno' />");
+                    out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Remover');\"/>");
 
+	        	}else{
+	        		out.println("<input type='submit' name='Submit'  class='submit' value='Remover Responsável' />");
+                    out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Remover');\"/>");
+	        	}
+	        }else{
+		        out.println("<div class='field'><label for='tipoBusca'>Tipo de Remoção:</label><select class='input' name='opcao'><option value='0'>Aluno</option><option value='1'>Responsável</option></select> <p class='hint'>Selecione o Tipo de Remoção Que Você Deseja</p></div>");
+	            out.println("<input type='submit' name='Submit'  class='submit' value='Enviar' />");
+	        }
+	            
+	            
 	        out.println("</form>");
 	        out.println("</div>");
 	        out.println("</body>");
