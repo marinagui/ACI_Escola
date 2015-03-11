@@ -92,7 +92,56 @@ public class Responsaveis {
 		}
 	}
 	
-	public ArrayList<Responsavel> buscarResponsavel(String email, String nome, String telefone, String endereço)throws Exception{
-		return null;
+	public ArrayList<Responsavel> buscarResponsavel(String email, String nome, String telefone, String endereco) throws Exception{
+		
+		if ((email == null) && (nome == null) && (telefone == null) && (endereco == null))
+			throw new Exception("Preencha pelo menos um para realizar a busca");
+		
+		String cmd = "";
+		
+		cmd += "select * from ACI_Responsavel where ";
+		
+		if (email != null) 
+			cmd += "email like '%"+email+"%'";
+				
+		if (nome != null) 
+			cmd += "and nome like '%"+nome+"%'";
+
+		if (telefone != null) 
+			cmd += "and telefone like '%"+telefone+"%'";
+		
+		if (endereco != null)
+			cmd += "and endereco like '%"+endereco+"%'";
+		
+		ResultSet result = this.bancoConec.execConsulta(cmd);
+		
+		if (result.first()) {
+			String rEmail, rNome, rTelefone, rEndereco;
+				ArrayList<Responsavel> aResp = new ArrayList<Responsavel>();
+				
+				result.beforeFirst();
+				rEmail = result.getString("email");
+				rNome = result.getString("nome");
+				rTelefone = result.getString("telefone");
+				rEndereco = result.getString("endereco");
+				Responsavel r = new Responsavel(rEmail,rNome,rTelefone,rEndereco);
+				aResp.add(r);
+				
+				while (result.next()) {
+					rEmail = result.getString("email");
+					rNome = result.getString("nome");
+					rTelefone = result.getString("telefone");
+					rEndereco = result.getString("endereco");
+					Responsavel resp = new Responsavel(rEmail,rNome,rTelefone,rEndereco);
+					aResp.add(resp);
+				}
+				
+				return aResp;
+		} else {
+			throw new Exception("Nenhum resultado");
+		}
+						
+		//return null;
 	}
+	
 }
