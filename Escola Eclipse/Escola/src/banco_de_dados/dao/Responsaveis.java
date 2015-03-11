@@ -95,23 +95,32 @@ public class Responsaveis {
 	public ArrayList<Responsavel> buscarResponsavel(String email, String nome, String telefone, String endereco) throws Exception{
 		
 		if ((email == null) && (nome == null) && (telefone == null) && (endereco == null))
-			throw new Exception("Preencha pelo menos um para realizar a busca");
+			throw new Exception("Preencha pelo menos um dos campos para realizar a busca");
 		
 		String cmd = "";
 		
 		cmd += "select * from ACI_Responsavel where ";
 		
-		if (email != null) 
+		if (email != null) {
 			cmd += "email like '%"+email+"%'";
-				
-		if (nome != null) 
-			cmd += "and nome like '%"+nome+"%'";
+			if ((nome != null) || (telefone != null) || (endereco != null))
+				cmd += " and ";
+		}
+			
+		if (nome != null) {
+			cmd += "nome like '%"+nome+"%'";
+			if ((telefone != null) || (endereco != null))
+				cmd += " and ";
+		}	
 
-		if (telefone != null) 
+		if (telefone != null) {
 			cmd += "and telefone like '%"+telefone+"%'";
+			if (endereco != null)
+				cmd += " and ";
+		}
 		
 		if (endereco != null)
-			cmd += "and endereco like '%"+endereco+"%'";
+			cmd += "endereco like '%"+endereco+"%'";
 		
 		ResultSet result = this.bancoConec.execConsulta(cmd);
 		
@@ -140,8 +149,6 @@ public class Responsaveis {
 		} else {
 			throw new Exception("Nenhum resultado");
 		}
-						
-		//return null;
 	}
 	
 }
