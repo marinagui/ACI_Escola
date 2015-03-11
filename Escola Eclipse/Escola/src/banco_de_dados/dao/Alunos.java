@@ -1,6 +1,7 @@
 package banco_de_dados.dao;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import banco_de_dados.BD;
 import banco_de_dados.ConnectionData;
@@ -90,7 +91,7 @@ public class Alunos {
 		}
 	}
 	
-	public Aluno[] buscarAluno(String RA, String nome, String email, String telefone, String endereco, String responsavel){
+	public ArrayList<Aluno> buscarAluno(String RA, String nome, String email, String telefone, String endereco, String responsavel){
 		return null;
 	}
 	

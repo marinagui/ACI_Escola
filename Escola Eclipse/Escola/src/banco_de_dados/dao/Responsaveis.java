@@ -1,6 +1,7 @@
 package banco_de_dados.dao;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import banco_de_dados.BD;
 import banco_de_dados.ConnectionData;
@@ -91,7 +92,7 @@ public class Responsaveis {
 		}
 	}
 	
-	public Responsavel[] buscarResponsavel(String email, String nome, String telefone, String endereço)throws Exception{
+	public ArrayList<Responsavel> buscarResponsavel(String email, String nome, String telefone, String endereço)throws Exception{
 		return null;
 	}
 }

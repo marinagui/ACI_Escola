@@ -2,12 +2,16 @@ package escola;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import banco_de_dados.dao.Alunos;
+import banco_de_dados.dbo.Aluno;
 
 /**
  * Servlet implementation class Busca
@@ -66,8 +70,62 @@ public class Busca extends HttpServlet {
 	        out.println("<div class='conteudo'>");
             
 	        out.println("<form id='formulario' class='rounded' method='post' action='Busca' onsubmit='return validaResponsavel(this)'>");
-	       
-	        if(request.getParameter("opcao")!=null){
+            
+
+	        String ra, nomeAluno,emailAluno,telefoneAluno,enderecoAluno,resp;
+        	ra = request.getParameter("ra");
+        	nomeAluno = request.getParameter("nomeAluno");
+        	emailAluno = request.getParameter("emailAluno");
+        	telefoneAluno = request.getParameter("telefoneAluno");
+        	enderecoAluno = request.getParameter("enderecoAluno");
+        	resp = request.getParameter("resp");
+        	if(telefoneAluno != null){
+	        	telefoneAluno = telefoneAluno.replace("(", "");
+	        	telefoneAluno = telefoneAluno.replace(")", "");
+	        	telefoneAluno = telefoneAluno.replace("-", "");
+        	}
+        	String nomeResp,telefoneResp,enderecoResp,emailResp;
+        	emailResp = request.getParameter("emailResp");
+        	nomeResp = request.getParameter("nomeResp");
+        	telefoneResp = request.getParameter("telefoneResp");
+        	enderecoResp = request.getParameter("enderecoResp");
+        	if(telefoneResp != null){
+	        	telefoneResp = telefoneResp.replace("(", "");
+	        	telefoneResp = telefoneResp.replace(")", "");
+	        	telefoneResp = telefoneResp.replace("-", "");
+        	}
+        	
+        	if(ra!=null || nomeAluno != null || emailAluno != null || telefoneAluno != null ||
+        			enderecoAluno != null || resp != null ){
+        		try{
+        		Alunos alunos = new Alunos();
+        		ArrayList<Aluno> resultado = alunos.buscarAluno(ra, nomeAluno, emailAluno, 
+        				telefoneAluno, enderecoAluno, resp);
+                out.println("<h2>Busca de Alunos</h2>");
+
+        		out.println("<table>");
+        		out.println("<tr>");
+        		out.println("<td>RA</td>");
+        		out.println("<td>Nome</td>");
+        		out.println("<td>Email</td>");
+        		out.println("<td>Telefone</td>");
+        		out.println("<td>Endereço</td>");
+        		out.println("<td>Responsavel</td>");
+        		out.println("</tr>");
+        		if(resultado != null){
+	        		for(int i=0;i<resultado.size(); i++){
+	        			
+	        		}
+        		}
+        		out.println("</table>");
+		        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
+        		
+        		}catch(Exception e){
+        			out.println("<div class='mensagem'>" + e.getMessage() +  "</div>");
+        		}
+        	}else if(emailResp != null || nomeResp != null || telefoneResp != null || enderecoResp != null){
+        		out.println("oi");
+        	}else if(request.getParameter("opcao")!=null){
 	        	int opcao = Integer.parseInt(request.getParameter("opcao"));
 	        	if(opcao == 0){
 	        		out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Por RA</p></div>");
@@ -75,7 +133,7 @@ public class Busca extends HttpServlet {
 		            out.println("<div class='field'><label for='emailAluno'>Email:</label><input type='text' class='input' name='emailAluno' id='emailAluno' maxlength='100'/><p class='hint'>Por Email</p></div>");
 		            out.println("<div class='field'><label for='telefoneAluno'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneAluno' id='telefoneAluno' maxlength='15'/><p class='hint'>Por Telefone</p></div>");
 		            out.println("<div class='field'><label for='enderecoAluno'>Endereço:</label><input type='text' class='input' name='enderecoAluno' id='enderecoAluno' maxlength='100'/><p class='hint'>Por Endereço</p></div>");
-		            out.println("<div class='field'><label for='emailResp'>Email do Responsável:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Por Responsável</p></div>");
+		            out.println("<div class='field'><label for='resp'>Email do Responsável:</label><input type='text' class='input' name='resp' id='resp' maxlength='100'/><p class='hint'>Por Responsável</p></div>");
 		            out.println("<input type='submit' name='Submit'  class='submit' value='Buscar' />");
 			        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
 	        	}else{
@@ -87,6 +145,7 @@ public class Busca extends HttpServlet {
 			        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
 	        	}
 	        }else{
+	            out.println("<h2>Busca</h2>");
 		        out.println("<div class='field'><label for='tipoBusca'>Tipo de Busca:</label><select class='input' name='opcao'><option value='0'>Aluno</option><option value='1'>Responsável</option></select> <p class='hint'>Selecione o Tipo de Busca Que Você Deseja</p></div>");
 	            out.println("<input type='submit' name='Submit'  class='submit' value='Enviar' />");
 	        }
@@ -96,6 +155,8 @@ public class Busca extends HttpServlet {
             out.println("</div>");
             out.println("</body>");
             out.println("</html>");
+        }catch (Exception e){
+        	out.println("<div class='mensagem'>" + e +  "</div>");
         }finally{
             out.close();
         }
