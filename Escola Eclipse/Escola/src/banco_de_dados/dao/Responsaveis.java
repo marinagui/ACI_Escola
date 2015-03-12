@@ -25,11 +25,20 @@ public class Responsaveis {
 		
 		result.close();
 		
-		String comSQL = "insert into ACI_Responsavel values('"+
+		String comSql = "select * from ACI_Aluno where Email='" + responsavel.getEmail() + "'";
+		result = this.bancoConec.execConsulta(comSql);
+		if(result.first()){
+			throw new Exception("Esse Email Já Foi Cadastrado");
+		}
+		result.close();
+		
+		
+		
+		comSql = "insert into ACI_Responsavel values('"+
 				responsavel.getEmail()+"','"+responsavel.getNome()+
 				"','"+ responsavel.getTelefone()+"','"+responsavel.getEndereco() + "')";
 		
-		this.bancoConec.execComando(comSQL);
+		this.bancoConec.execComando(comSql);
 	}
 	
 	public void removerResponsavel(String emailResponsavel) throws Exception{

@@ -36,7 +36,6 @@ public class CadastroAlunos extends HttpServlet {
             out.println("<head>");
             out.println("<title>Cadastro Alunos</title>"); 
             out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
-            out.println("<link rel=\"stylesheet\" href=\"resources/styles/style-cadastro-alunos.css\" type=\"text/css\"/>");
 	        out.println("<script src='resources/scripts/jquery.js'> </script>");
 	        out.println("<script src='resources/scripts/script-mascara.js'> </script>");           
             out.println("<script src=\"resources/scripts/script-cadastro-alunos.js\"> </script");
@@ -91,7 +90,7 @@ public class CadastroAlunos extends HttpServlet {
 		        	out.println("<input type='submit' name='Submit'  class='submit' title='Submit' value='Voltar'/>");
             	}catch(Exception e){
             		out.println("<div class='mensagem'>"+e.getMessage()+"</div>");
-                    out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra'"+" value='"+ra+"' " +"name='ra' id='ra' maxlength='5'/><p class='hint'>Insira seu RA</p></div>");
+                    out.println("<div class='field'><label for='ra'>RA:</label><input type='text' class='input ra'"+" value='"+ra+"' " +"name='ra' id='ra' maxlength='5'/><p class='hint'>Insira seu RA</p></div>");
                     out.println("<div class='field'><label for='nomeAluno'>Nome do aluno:</label><input type='text' class='input'"+" value='"+nomeAluno+"' " +" name='nomeAluno' id='nomeAluno' maxlength='50'/><p class='hint'>Nome completo</p></div>");
                     out.println("<div class='field'><label for='emailAluno'>Email:</label><input type='text' class='input'"+" value='"+emailAluno+"' " +" name='emailAluno' id='emailAluno' maxlength='100'/><p class='hint'>Insira o seu email</p></div>");
                     out.println("<div class='field'><label for='telefoneAluno'>Telefone/celular:</label><input type='text' class='input telefone'"+" value='"+telefoneAluno+"' " +" name='telefoneAluno' id='telefoneAluno' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");
@@ -100,7 +99,7 @@ public class CadastroAlunos extends HttpServlet {
                     out.println("<input type='submit' name='Submit'  class='submit' value='Enviar' />");
             	}
             }else{
-	            out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Insira seu RA</p></div>");
+	            out.println("<div class='field'><label for='ra'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Insira seu RA</p></div>");
 	            out.println("<div class='field'><label for='nomeAluno'>Nome do aluno:</label><input type='text' class='input' name='nomeAluno' id='nomeAluno' maxlength='50'/><p class='hint'>Nome completo</p></div>");
 	            out.println("<div class='field'><label for='emailAluno'>Email:</label><input type='text' class='input' name='emailAluno' id='emailAluno' maxlength='100'/><p class='hint'>Insira o seu email</p></div>");
 	            out.println("<div class='field'><label for='telefoneAluno'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneAluno' id='telefoneAluno' maxlength='15'/><p class='hint'>Insira seu número de telefone fixo ou celular</p></div>");

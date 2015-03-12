@@ -92,7 +92,7 @@ public class Remover extends HttpServlet {
 	        		Responsaveis responsaveis = new Responsaveis();
 	        		responsaveis.removerResponsavel(request.getParameter("emailResp"));
 	        		out.println("<h2>Remoção de Responsáveis</h2>");
-	        		out.println("<div class='mensagem'>O Aluno For Excluido Com Sucesso</div>");
+	        		out.println("<div class='mensagem'>O Responsável For Excluido Com Sucesso</div>");
                     out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Remover');\"/>");
 	        	}catch(Exception e){
 	        		out.println("<h2>Remoção de Responsáveis</h2>");

@@ -26,6 +26,20 @@ public class Alunos {
 		}
 		result.close();
 		
+		comSql = "select * from ACI_Aluno where Email='" + aluno.getEmail() + "'";
+		result = this.bancoConec.execConsulta(comSql);
+		if(result.first()){
+			throw new Exception("Esse Email Já Foi Cadastrado");
+		}
+		result.close();
+		
+		comSql = "select * from ACI_Responsavel where Email='" + aluno.getEmail() + "'";
+		result = this.bancoConec.execConsulta(comSql);
+		if(result.first()){
+			throw new Exception("Esse Email Já Foi Cadastrado");
+		}
+		result.close();
+		
 		// checa se o responsavel já foi cadastrado
 		comSql = "select * from ACI_Responsavel where Email='" + aluno.getResponsavel() +"'";
 		result = this.bancoConec.execConsulta(comSql);
@@ -49,6 +63,20 @@ public class Alunos {
 		}
 		result.close();
 				
+		comSql = "select * from ACI_Aluno where Email='" + aluno.getEmail() + "'";
+		result = this.bancoConec.execConsulta(comSql);
+		if(result.first()){
+			throw new Exception("Esse Email Já Foi Cadastrado");
+		}
+		result.close();
+		
+		comSql = "select * from ACI_Responsavel where Email='" + aluno.getEmail() + "'";
+		result = this.bancoConec.execConsulta(comSql);
+		if(result.first()){
+			throw new Exception("Esse Email Já Foi Cadastrado");
+		}
+		result.close();
+		
 		// checa se o responsavel já foi cadastrado
 		comSql = "select * from ACI_Responsavel where Email='" + aluno.getResponsavel() +"'";
 		result = this.bancoConec.execConsulta(comSql);

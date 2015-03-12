@@ -38,9 +38,21 @@
             </div>
             <div class="conteudo">
                 <div class="descricao">
-                    <div class="desc">Exerício do uso de servlets em java WEB </div>
-                    <div class="desc">Nomes: João Vitor Araki Gonçalves / Marina Guimarães </div>
-                    <div class="desc">RA: 13176 / 13185</div>
+                <div class="desc"><h3>Exerício do uso de servlets em java WEB </h3></div>
+                	<table>
+                		<tr>
+                			<th>Nomes</th>
+                			<th>RA</th>
+                		</tr>
+                		<tr>
+                			<td>João Vitor Araki Gonçalves</td>
+                			<td>13176</td>
+                		</tr>
+                		<tr>
+                			<td>Marina Guimarães</td>
+                			<td>13185</td>
+                		</tr>
+                	</table>
                 </div>
             </div>
         </div>

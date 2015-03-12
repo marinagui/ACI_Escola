@@ -22,23 +22,25 @@ String.prototype.replaceAll = function(str1, str2, ignore)
 }
 
 function validaAluno(formulario) { 
-	var RA = formulario.RA.value; 
+	var RA = formulario.ra.value; 
 	var nome = formulario.nomeAluno.value; 
 	var email = formulario.emailAluno.value;
 	var telefone = formulario.telefoneAluno.value; 
 	var endereco = formulario.enderecoAluno.value; 
-	var responsavel = formulario.responsavel.value;
+	var responsavel = formulario.emailResp.value;
 	
-	if (RA == "" || nome == "" || telefone == "" || endereco == "" || responsavel == "") {
+	if (RA == "" || nome == "" || email == "" || telefone == "" || endereco == "" || responsavel == "") {
 		alert('Preencha todos os campos'); 
-		formulario.RA.focus(); 
+		formulario.ra.focus(); 
 		return false; 
 	}
+	
+	
 	
 	/*valida RA*/
 	if (isNaN(parseFloat(RA))) {
 		alert('RA inválido');
-		formulario.RA.focus(); 
+		formulario.ra.focus(); 
 		return false; 
 	}
    
@@ -62,7 +64,13 @@ function validaAluno(formulario) {
 
 	
 	/*valida telefone*/
-    telefone = telefone.replace(/D/g,"");
+	
+	
+
+    telefone = telefone.replaceAll("(","");
+    telefone =  telefone.replaceAll(")","");
+    telefone = telefone.replaceAll("-","");
+    
     formulario.telefoneAluno.value = telefone;
 	if (isNaN(parseFloat(telefone))) {
        	alert('Telefone inválido');  
@@ -73,9 +81,9 @@ function validaAluno(formulario) {
 }
 
 function validacaoEmail(email) { 
-	usuario = email.value.substring(0, email.value.indexOf("@")); 
-	dominio = email.value.substring(email.value.indexOf("@")+ 1, email.value.length); 
-	if (!((usuario.length >=1) && 
+	usuario = email.substring(0, email.indexOf("@")); 
+	dominio = email.substring(email.indexOf("@")+ 1, email.length); 
+	if ((usuario.length >=1) && 
 		  (dominio.length >=3) && 
 		  (usuario.search("@")==-1) && 
 		  (dominio.search("@")==-1) && 
@@ -83,15 +91,10 @@ function validacaoEmail(email) {
 		  (dominio.search(" ")==-1) && 
 		  (dominio.search(".")!=-1) && 
 		  (dominio.indexOf(".") >=1) && 
-		  (dominio.lastIndexOf(".") < dominio.length - 1))) {  
-		return false;
+		  (dominio.lastIndexOf(".") < dominio.length - 1)) {  
+		return true;
 	} 
-}
 
-function validacaoRA(RA) {
-	if (isNaN(parseFloat(RA))) 
-		formulario.RA.style.color = 'red';
-	else
-		formulario.RA.style.color = 'black';
+	return false;
 }
 
