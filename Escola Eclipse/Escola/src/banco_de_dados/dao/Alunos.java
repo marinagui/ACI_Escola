@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import banco_de_dados.BD;
 import banco_de_dados.ConnectionData;
 import banco_de_dados.dbo.Aluno;
-import banco_de_dados.dbo.Responsavel;
 
 public class Alunos {
 	

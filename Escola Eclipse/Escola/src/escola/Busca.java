@@ -130,7 +130,9 @@ public class Busca extends HttpServlet {
 		        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
         		
         		}catch(Exception e){
+        			out.println("<h2>Busca de Responsaveis</h2>");
         			out.println("<div class='mensagem'>" + e.getMessage() +  "</div>");
+        			out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
         		}
         	}else if(emailResp != null || nomeResp != null || telefoneResp != null || enderecoResp != null){
         		try{
@@ -158,7 +160,9 @@ public class Busca extends HttpServlet {
         			out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
         			
         		}catch (Exception e){
+        			out.println("<h2>Busca de Responsaveis</h2>");
         			out.println("<div class='mensagem'>" + e.getMessage() +  "</div>");
+        			out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
         		}
         	}else if(request.getParameter("opcao")!=null){
 	        	int opcao = Integer.parseInt(request.getParameter("opcao"));
