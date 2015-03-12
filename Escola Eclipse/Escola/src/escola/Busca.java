@@ -40,6 +40,9 @@ public class Busca extends HttpServlet {
             out.println("<head>");
             out.println("<title>Busca</title>"); 
             out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
+            out.println("<script src='resources/scripts/jquery.js'> </script>");
+	        out.println("<script src='resources/scripts/script-mascara.js'> </script>");
+            out.println("<script src='resources/scripts/script-busca.js'> </script>");
             out.println("</head>");
             out.println("<body>");
             out.println("<div>");
@@ -71,7 +74,7 @@ public class Busca extends HttpServlet {
             
 	        out.println("<div class='conteudo'>");
             
-	        out.println("<form id='formulario' class='rounded' method='post' action='Busca' onsubmit='return validaResponsavel(this)'>");
+	        out.println("<form id='formulario' class='rounded' method='post' action='Busca' >");
             
 
 	        String ra, nomeAluno,emailAluno,telefoneAluno,enderecoAluno,resp;

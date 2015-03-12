@@ -1,0 +1,152 @@
+package escola;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import banco_de_dados.dao.Alunos;
+import banco_de_dados.dbo.Aluno;
+
+/**
+ * Servlet implementation class Busca
+ */
+@WebServlet("/Busca")
+public class Busca extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Busca() {
+        super();
+    }
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try  {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Busca</title>"); 
+            out.println("<link rel=\"stylesheet\" href=\"resources/styles/style.css\" type=\"text/css\"/>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<div>");
+            
+            out.println("<div class=\"menu-holder\"> \n" +
+"                <ul>\n" +
+"                    <li>\n" +
+"                        <a href=\"index.jsp \"  id=\"home-item\"><img src=\"resources/images/home.ico\" class=\"home-image\"></a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"CadastroAlunos\"  >Cadastro de Alunos</a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"CadastroResponsaveis\">Cadastro de Responsáveis</a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"EditarAluno\" >Editar Aluno</a>\n" +
+"                    </li>\n" +
+"                    <li>\n" +
+"                        <a href=\"EditarResponsavel\">Editar Responsável</a>\n" +
+"                    </li>\n"+"<li>"+
+                    	"<a href='Remover'>Remover</a>"+
+                    "</li>"
+                    + "<li>\n" +
+"                        <a href=\"Busca\" id=\"search-item\" class=\"menu-item-selected\"><img src=\"resources/images/search-item.png\" class=\"search-image\"></a>\n" +
+"                    </li>" +
+"                </ul>\n" +
+"            </div>");
+            
+	        out.println("<div class='conteudo'>");
+            
+	        out.println("<form id='formulario' class='rounded' method='post' action='Busca' onsubmit='return validaResponsavel(this)'>");
+	       
+	        String ra, nomeAluno,emailAluno,telefoneAluno,enderecoAluno,resp;
+        	ra = request.getParameter("ra");
+        	nomeAluno = request.getParameter("nomeAluno");
+        	emailAluno = request.getParameter("emailAluno");
+        	telefoneAluno = request.getParameter("telefoneAluno");
+        	enderecoAluno = request.getParameter("enderecoAluno");
+        	resp = request.getParameter("resp");
+        	telefoneAluno = telefoneAluno.replace("(", "");
+        	telefoneAluno = telefoneAluno.replace(")", "");
+        	telefoneAluno = telefoneAluno.replace("-", "");
+        	
+        	String nomeResp,telefoneResp,enderecoResp,emailResp;
+        	emailResp = request.getParameter("emailResp");
+        	nomeResp = request.getParameter("nomeResp");
+        	telefoneResp = request.getParameter("telefoneResp");
+        	enderecoResp = request.getParameter("enderecoResp");
+        	telefoneResp = telefoneResp.replace("(", "");
+        	telefoneResp = telefoneResp.replace(")", "");
+        	telefoneResp = telefoneResp.replace("-", "");
+        	
+        	if(ra!=null || nomeAluno != null || emailAluno != null || telefoneAluno != null ||
+        			enderecoAluno != null || resp != null ){
+        		try{
+        		Alunos alunos = new Alunos();
+        		ArrayList<Aluno> resultado = alunos.buscarAluno(ra, nomeAluno, emailAluno, telefoneAluno, enderecoAluno, resp);
+        		}catch(Exception e){
+        			out.println("<div class='mensagem'>" + e.getMessage() +  "</div>");
+        		}
+        	}else if(emailResp != null || nomeResp != null || telefoneResp != null || enderecoResp != null){
+        		
+        	}else if(request.getParameter("opcao")!=null){
+	        	int opcao = Integer.parseInt(request.getParameter("opcao"));
+	        	if(opcao == 0){
+	        		out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Por RA</p></div>");
+		            out.println("<div class='field'><label for='nomeAluno'>Nome do aluno:</label><input type='text' class='input' name='nomeAluno' id='nomeAluno' maxlength='50'/><p class='hint'>Por Nome</p></div>");
+		            out.println("<div class='field'><label for='emailAluno'>Email:</label><input type='text' class='input' name='emailAluno' id='emailAluno' maxlength='100'/><p class='hint'>Por Email</p></div>");
+		            out.println("<div class='field'><label for='telefoneAluno'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneAluno' id='telefoneAluno' maxlength='15'/><p class='hint'>Por Telefone</p></div>");
+		            out.println("<div class='field'><label for='enderecoAluno'>Endereço:</label><input type='text' class='input' name='enderecoAluno' id='enderecoAluno' maxlength='100'/><p class='hint'>Por Endereço</p></div>");
+		            out.println("<div class='field'><label for='resp'>Email do Responsável:</label><input type='text' class='input' name='resp' id='resp' maxlength='100'/><p class='hint'>Por Responsável</p></div>");
+		            out.println("<input type='submit' name='Submit'  class='submit' value='Buscar' />");
+			        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
+	        	}else{
+	        		out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Por Email</p></div>");
+			        out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Por Nome</p></div>");
+			        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Por Telefone</p></div>");
+			        out.println("<div class='field'><label for='enderecoResp'>Endereço:</label><input type='text' class='input' name='enderecoResp' id='enderecoResp' maxlength='100'/><p class='hint'>Por Endereço</p></div>"); 
+			        out.println("<input type='submit' name='Submit'  class='submit' value='Buscar' />");
+			        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
+	        	}
+	        }else{
+		        out.println("<div class='field'><label for='tipoBusca'>Tipo de Busca:</label><select class='input' name='opcao'><option value='0'>Aluno</option><option value='1'>Responsável</option></select> <p class='hint'>Selecione o Tipo de Busca Que Você Deseja</p></div>");
+	            out.println("<input type='submit' name='Submit'  class='submit' value='Enviar' />");
+	        }
+            
+            out.println("</form>");
+            
+            out.println("</div>");
+            out.println("</body>");
+            out.println("</html>");
+        }finally{
+            out.close();
+        }
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		processRequest(request, response);
+	}
+
+}

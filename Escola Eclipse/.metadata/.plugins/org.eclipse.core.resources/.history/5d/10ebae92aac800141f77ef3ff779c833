@@ -1,0 +1,15 @@
+$(document).ready(function () {
+    $(".ra").on('input propertychange paste', function () {
+        mask(this, "99999");
+    });
+    $(".ra").on('focus', function () {
+        mask(this, "99999");
+    });
+    
+    $(".telefone").on('input propertychange paste', function () {
+        mask(this, "(99)99999-9999");
+    });
+    $(".telefone").on('focus', function () {
+        mask(this, "(99)99999-9999");
+    });
+});
