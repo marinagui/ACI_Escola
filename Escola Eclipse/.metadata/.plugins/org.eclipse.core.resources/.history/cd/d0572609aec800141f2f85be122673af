@@ -170,7 +170,6 @@ public class Busca extends HttpServlet {
         	}else if(request.getParameter("opcao")!=null){
 	        	int opcao = Integer.parseInt(request.getParameter("opcao"));
 	        	if(opcao == 0){
-	        		out.println("<h2>Busca de Alunos</h2>");
 	        		out.println("<div class='field'><label for='RA'>RA:</label><input type='text' class='input ra' name='ra' id='ra' maxlength='5'/><p class='hint'>Por RA</p></div>");
 		            out.println("<div class='field'><label for='nomeAluno'>Nome do aluno:</label><input type='text' class='input' name='nomeAluno' id='nomeAluno' maxlength='50'/><p class='hint'>Por Nome</p></div>");
 		            out.println("<div class='field'><label for='emailAluno'>Email:</label><input type='text' class='input' name='emailAluno' id='emailAluno' maxlength='100'/><p class='hint'>Por Email</p></div>");
@@ -180,7 +179,6 @@ public class Busca extends HttpServlet {
 		            out.println("<input type='submit' name='Submit'  class='submit' value='Buscar' />");
 			        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
 	        	}else{
-	        		out.println("<h2>Busca de Responsaveis</h2>");
 	        		out.println("<div class='field'><label for='emailResp'>Email:</label><input type='text' class='input' name='emailResp' id='emailResp' maxlength='100'/><p class='hint'>Por Email</p></div>");
 			        out.println("<div class='field'><label for='nomeResp'>Nome:</label><input type='text' class='input' name='nomeResp' id='nomeResp' maxlength='50'/><p class='hint'>Por Nome</p></div>");
 			        out.println("<div class='field'><label for='telefoneResp'>Telefone/celular:</label><input type='text' class='input telefone' name='telefoneResp' id='telefoneResp' maxlength='15'/><p class='hint'>Por Telefone</p></div>");
