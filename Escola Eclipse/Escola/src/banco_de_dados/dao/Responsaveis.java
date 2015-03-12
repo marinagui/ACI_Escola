@@ -114,7 +114,7 @@ public class Responsaveis {
 		}	
 
 		if (telefone != null) {
-			cmd += "and telefone like '%"+telefone+"%'";
+			cmd += "telefone like '%"+telefone+"%'";
 			if (endereco != null)
 				cmd += " and ";
 		}
@@ -127,8 +127,6 @@ public class Responsaveis {
 		if (result.first()) {
 			String rEmail, rNome, rTelefone, rEndereco;
 				ArrayList<Responsavel> aResp = new ArrayList<Responsavel>();
-				
-				result.beforeFirst();
 				rEmail = result.getString("email");
 				rNome = result.getString("nome");
 				rTelefone = result.getString("telefone");

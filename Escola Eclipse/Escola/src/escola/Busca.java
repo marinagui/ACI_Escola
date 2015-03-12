@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import banco_de_dados.dao.Alunos;
+import banco_de_dados.dao.Responsaveis;
 import banco_de_dados.dbo.Aluno;
+import banco_de_dados.dbo.Responsavel;
 
 /**
  * Servlet implementation class Busca
@@ -114,7 +116,14 @@ public class Busca extends HttpServlet {
         		out.println("</tr>");
         		if(resultado != null){
 	        		for(int i=0;i<resultado.size(); i++){
-	        			
+	        			out.println("<tr>");
+	            		out.println("<td>"+resultado.get(i).getRA()+"</td>");
+	            		out.println("<td>"+resultado.get(i).getNome()+"</td>");
+	            		out.println("<td>"+resultado.get(i).getEmail()+"</td>");
+	            		out.println("<td>"+resultado.get(i).getTelefone()+"</td>");
+	            		out.println("<td>"+resultado.get(i).getEndereco()+"</td>");
+	            		out.println("<td>"+resultado.get(i).getResponsavel()+"</td>");
+	            		out.println("</tr>");
 	        		}
         		}
         		out.println("</table>");
@@ -124,7 +133,33 @@ public class Busca extends HttpServlet {
         			out.println("<div class='mensagem'>" + e.getMessage() +  "</div>");
         		}
         	}else if(emailResp != null || nomeResp != null || telefoneResp != null || enderecoResp != null){
-        		out.println("oi");
+        		try{
+        			Responsaveis responsaveis = new Responsaveis();
+        			ArrayList<Responsavel> resultado = responsaveis.buscarResponsavel(emailResp, nomeResp, telefoneResp, enderecoResp);
+        			out.println("<h2>Busca de Responsaveis</h2>");
+        			out.println("<table>");
+            		out.println("<tr>");
+            		out.println("<td>Email</td>");
+            		out.println("<td>Nome</td>");
+            		out.println("<td>Telefone</td>");
+            		out.println("<td>Endereço</td>");
+            		out.println("</tr>");
+        			if(resultado != null){
+        				for(int i=0; i<resultado.size(); i++){
+        					out.println("<tr>");
+                    		out.println("<td>"+resultado.get(i).getEmail()+"</td>");
+                    		out.println("<td>"+resultado.get(i).getNome()+"</td>");
+                    		out.println("<td>"+resultado.get(i).getTelefone()+"</td>");
+                    		out.println("<td>"+resultado.get(i).getEndereco()+"</td>");
+                    		out.println("</tr>");
+        				}
+        			}
+        			out.println("</table>");
+        			out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
+        			
+        		}catch (Exception e){
+        			out.println("<div class='mensagem'>" + e.getMessage() +  "</div>");
+        		}
         	}else if(request.getParameter("opcao")!=null){
 	        	int opcao = Integer.parseInt(request.getParameter("opcao"));
 	        	if(opcao == 0){
