@@ -107,12 +107,12 @@ public class Busca extends HttpServlet {
 
         		out.println("<table>");
         		out.println("<tr>");
-        		out.println("<td>RA</td>");
-        		out.println("<td>Nome</td>");
-        		out.println("<td>Email</td>");
-        		out.println("<td>Telefone</td>");
-        		out.println("<td>Endereço</td>");
-        		out.println("<td>Responsavel</td>");
+        		out.println("<th>RA</th>");
+        		out.println("<th>Nome</th>");
+        		out.println("<th>Email</th>");
+        		out.println("<th>Telefone</th>");
+        		out.println("<th>Endereço</th>");
+        		out.println("<th>Responsavel</th>");
         		out.println("</tr>");
         		if(resultado != null){
 	        		for(int i=0;i<resultado.size(); i++){
@@ -141,10 +141,10 @@ public class Busca extends HttpServlet {
         			out.println("<h2>Busca de Responsaveis</h2>");
         			out.println("<table>");
             		out.println("<tr>");
-            		out.println("<td>Email</td>");
-            		out.println("<td>Nome</td>");
-            		out.println("<td>Telefone</td>");
-            		out.println("<td>Endereço</td>");
+            		out.println("<th>Email</th>");
+            		out.println("<th>Nome</th>");
+            		out.println("<th>Telefone</th>");
+            		out.println("<th>Endereço</th>");
             		out.println("</tr>");
         			if(resultado != null){
         				for(int i=0; i<resultado.size(); i++){
