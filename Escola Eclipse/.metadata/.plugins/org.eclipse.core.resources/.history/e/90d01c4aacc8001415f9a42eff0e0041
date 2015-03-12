@@ -12,10 +12,10 @@ public class Responsavel {
 			throw new Exception("Os valores não podem ser nulos");
 		}
 		
-		this.email = email.replace("'", "");;
-		this.nome = nome.replace("'", "");;
-		this.telefone = telefone.replace("'", "");;
-		this.endereco = endereco.replace("'", "");;
+		this.email = email;
+		this.nome = nome;
+		this.telefone = telefone;
+		this.endereco = endereco;
 		
 	}
 	

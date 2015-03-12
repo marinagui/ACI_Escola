@@ -77,7 +77,7 @@ public class Alunos {
 	}
 	
 	public Aluno getAluno(String ra)throws Exception{
-		String comSql = "select * from ACI_Aluno where ra='"+ra.replace("'", "")+"'";
+		String comSql = "select * from ACI_Aluno where ra='"+ra.replace("'", "");+"'";
 		ResultSet result = this.bancoConec.execConsulta(comSql);
 		if(result.first()){
 			Aluno aluno = new Aluno(result.getString("RA"),

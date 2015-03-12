@@ -77,7 +77,7 @@ public class Alunos {
 	}
 	
 	public Aluno getAluno(String ra)throws Exception{
-		String comSql = "select * from ACI_Aluno where ra='"+ra.replace("'", "")+"'";
+		String comSql = "select * from ACI_Aluno where ra='"+ra+"'";
 		ResultSet result = this.bancoConec.execConsulta(comSql);
 		if(result.first()){
 			Aluno aluno = new Aluno(result.getString("RA"),
@@ -100,37 +100,37 @@ public class Alunos {
 		cmd += "select * from ACI_Aluno where ";
 		
 		if (RA != null) {
-			cmd += "RA like '%"+RA.replace("'", "")+"%'";
+			cmd += "RA like '%"+RA+"%'";
 			if ((nome != null) || (email != null) || (telefone != null) || (endereco != null) || (responsavel != null))
 				cmd += " and ";
 		}
 			
 		if (nome != null) {
-			cmd += "nome like '%"+nome.replace("'", "")+"%'";
+			cmd += "nome like '%"+nome+"%'";
 			if ((email != null) || (telefone != null) || (endereco != null) || (responsavel != null))
 				cmd += " and ";
 		}	
 		
 		if (email != null) {
-			cmd += "email like '%"+email.replace("'", "")+"%'";
+			cmd += "email like '%"+email+"%'";
 			if ((telefone != null) || (endereco != null) || (responsavel != null))
 				cmd += " and ";
 		}
 
 		if (telefone != null) {
-			cmd += "telefone like '%"+telefone.replace("'", "")+"%'";
+			cmd += "telefone like '%"+telefone+"%'";
 			if ((endereco != null) || (responsavel != null))
 				cmd += " and ";
 		}
 		
 		if (endereco != null) {
-			cmd += "endereco like '%"+endereco.replace("'", "")+"%'";
+			cmd += "endereco like '%"+endereco+"%'";
 			if ((responsavel != null))
 				cmd += " and ";
 		}	
 		
 		if (responsavel != null) {
-			cmd += "responsavel like '%"+responsavel.replace("'", "")+"%'";
+			cmd += "responsavel like '%"+responsavel+"%'";
 		}
 		
 		ResultSet result = this.bancoConec.execConsulta(cmd);
@@ -167,7 +167,7 @@ public class Alunos {
 	
 	public void removerAluno(String RA)throws Exception{
 		// checa se o aluno já foi cadastrado
-		String comSql = "select * from ACI_Aluno where RA='" + RA.replace("'", "") + "'";
+		String comSql = "select * from ACI_Aluno where RA='" + RA + "'";
 		ResultSet result = this.bancoConec.execConsulta(comSql);
 		if(!result.first()){
 			result.close();

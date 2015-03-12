@@ -34,7 +34,7 @@ public class Responsaveis {
 	
 	public void removerResponsavel(String emailResponsavel) throws Exception{
 		ResultSet result = this.bancoConec.execConsulta("Select * from ACI_Responsavel where Email='"
-				+emailResponsavel.replace("'", "")+"'");
+				+emailResponsavel+"'");
 		
 		if(!result.first()){
 			result.close();
@@ -82,7 +82,7 @@ public class Responsaveis {
 	}
 	
 	public Responsavel getResponsavel(String email) throws Exception{
-		ResultSet result = this.bancoConec.execConsulta("Select * from ACI_Responsavel where Email='"+email.replace("'", "")+"'");
+		ResultSet result = this.bancoConec.execConsulta("Select * from ACI_Responsavel where Email='"+email+"'");
 		if(result.first()){
 			Responsavel responsavel = new Responsavel(result.getString("Email"), result.getString("Nome"),result.getString("Telefone")
 					,result.getString("Endereco"));
@@ -102,25 +102,25 @@ public class Responsaveis {
 		cmd += "select * from ACI_Responsavel where ";
 		
 		if (email != null) {
-			cmd += "email like '%"+email.replace("'", "")+"%'";
+			cmd += "email like '%"+email+"%'";
 			if ((nome != null) || (telefone != null) || (endereco != null))
 				cmd += " and ";
 		}
 			
 		if (nome != null) {
-			cmd += "nome like '%"+nome.replace("'", "")+"%'";
+			cmd += "nome like '%"+nome+"%'";
 			if ((telefone != null) || (endereco != null))
 				cmd += " and ";
 		}	
 
 		if (telefone != null) {
-			cmd += "telefone like '%"+telefone.replace("'", "")+"%'";
+			cmd += "telefone like '%"+telefone+"%'";
 			if (endereco != null)
 				cmd += " and ";
 		}
 		
 		if (endereco != null)
-			cmd += "endereco like '%"+endereco.replace("'", "")+"%'";
+			cmd += "endereco like '%"+endereco+"%'";
 		
 		ResultSet result = this.bancoConec.execConsulta(cmd);
 		

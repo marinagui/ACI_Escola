@@ -15,12 +15,12 @@ public class Aluno {
 			throw new Exception("O telefone deve conter apenas numeros");
 		}		
 		
-		this.RA = RA.replace("'", "");
-		this.nome = nome.replace("'", "");;
-		this.email = email.replace("'", "");;
-		this.telefone = telefone.replace("'", "");;
-		this.endereco = endereco.replace("'", "");;
-		this.responsavel = responsavel.replace("'", "");;
+		this.RA = RA;
+		this.nome = nome;
+		this.email = email;
+		this.telefone = telefone;
+		this.endereco = endereco;
+		this.responsavel = responsavel;
 	}
 	
 	private boolean numerico(final String s){
