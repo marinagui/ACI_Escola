@@ -63,7 +63,7 @@ public class Alunos {
 		}
 		result.close();
 				
-		comSql = "select * from ACI_Aluno where Email='" + aluno.getEmail() + "' and RA <> '"+ aluno.getRA() + "'";
+		comSql = "select * from ACI_Aluno where Email='" + aluno.getEmail() + "'";
 		result = this.bancoConec.execConsulta(comSql);
 		if(result.first()){
 			throw new Exception("Esse Email Já Foi Cadastrado");

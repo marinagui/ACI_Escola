@@ -133,7 +133,7 @@ public class Busca extends HttpServlet {
 		        out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
         		
         		}catch(Exception e){
-        			out.println("<h2>Busca de Alunos</h2>");
+        			out.println("<h2>Busca de Responsaveis</h2>");
         			out.println("<div class='mensagem'>" + e.getMessage() +  "</div>");
         			out.println("<input type='button' name='Submit'  class='submit' value='Voltar' onclick=\"window.location.replace('Busca');\"/>");
         		}
