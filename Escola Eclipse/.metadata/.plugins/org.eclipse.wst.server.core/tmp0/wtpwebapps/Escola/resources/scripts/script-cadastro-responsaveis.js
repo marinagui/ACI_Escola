@@ -17,31 +17,49 @@ function validaResponsavel(formulario) {
 	var nome = formulario.nomeResp.value; 
 	var telefone = formulario.telefoneResp.value; 
 	var endereco = formulario.enderecoResp.value; 
-
+	var valido = true;
 	
-	if (nome == "" || telefone == "" || endereco == "") {
-		alert('Preencha todos os campos'); 
-		return false; 
+	formulario.nomeResp.style.borderColor = "#b9bdc1";
+	formulario.emailResp.style.borderColor = "#b9bdc1";
+	formulario.enderecoResp.style.borderColor = "#b9bdc1";
+	formulario.telefoneResp.style.borderColor = "#b9bdc1";
+	
+	if (nome == "" || telefone == "" || endereco == "" || email == "") {
+		if(nome == "")
+			formulario.nomeResp.style.borderColor = "red";
+		if(email == "")
+			formulario.emailResp.style.borderColor = "red";
+		if(endereco == "")
+			formulario.enderecoResp.style.borderColor = "red";
+		if(telefone == "")
+			formulario.telefoneResp.style.borderColor = "red";
+		valido = false; 
 	}
    
 	/*valida nome*/
     var re = /[a-zA-Z ]*/;
     if (!re.test(nome) || nome.length < 4) {
-       alert('Nome inválido'); 
-	   return false;
+    	formulario.nomeResp.style.borderColor = "red";
+    	valido = false; 
 	}
+    
+    
 
 	/*valida email*/
 	if (!validacaoEmail(email)) {
-		alert('E-mail inválido'); 
-		return false;
+		formulario.emailResp.style.borderColor = "red";
+		valido = false; 
 	}
+	
+	
 	
 	/*valida endereco*/
 	if(endereco.length<5){
-		alert('Endereço inválido');
-		return false;
+		formulario.enderecoResp.style.borderColor = "red";
+		valido = false; 
 	}
+	
+	
 	
 	/*valida telefone*/
 	
@@ -52,16 +70,19 @@ function validaResponsavel(formulario) {
     
     
 	if (isNaN(parseFloat(telefone))) {
-       alert('Telefone inválido'); 
-	   return false;
+       formulario.telefoneResp.style.borderColor = "red";
+       valido = false; 
 	}
 	
 	if(telefone.length < 10){
-		alert('Telefone inválido'); 
-		return false;
+		formulario.telefoneResp.style.borderColor = "red";
+		valido = false; 
 	}
 		
-	return true;
+	
+	
+	
+	return valido;
 	
 }
 

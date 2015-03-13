@@ -28,37 +28,60 @@ function validaAluno(formulario) {
 	var telefone = formulario.telefoneAluno.value; 
 	var endereco = formulario.enderecoAluno.value; 
 	var responsavel = formulario.emailResp.value;
+	var valido = true;
+	
+	formulario.ra.style.borderColor = "#b9bdc1";
+	formulario.nomeAluno.style.borderColor = "#b9bdc1";
+	formulario.emailAluno.style.borderColor = "#b9bdc1";
+	formulario.telefoneAluno.style.borderColor = "#b9bdc1";
+	formulario.enderecoAluno.style.borderColor = "#b9bdc1";
+	formulario.emailResp.style.borderColor = "#b9bdc1";
 	
 	if (RA == "" || nome == "" || email == "" || telefone == "" || endereco == "" || responsavel == "") {
-		alert('Preencha todos os campos'); 
-		formulario.ra.focus(); 
-		return false; 
+		if(RA == ""){
+			formulario.ra.style.borderColor = "red";
+		}
+		if(nome == ""){
+			formulario.nomeAluno.style.borderColor = "red";
+		}
+		if(email == ""){
+			formulario.emailAluno.style.borderColor = "red";
+		}
+		if(telefone == ""){
+			formulario.telefoneAluno.style.borderColor = "red";
+		}
+		if(endereco == ""){
+			formulario.enderecoAluno.style.borderColor = "red";
+		}
+		if(responsavel == ""){
+			formulario.emailResp.style.borderColor = "red";
+		}
+		valido = false; 
 	}
 	
 	
 	
 	/*valida RA*/
 	if (isNaN(parseFloat(RA))) {
-		alert('RA inválido');
-		formulario.ra.focus(); 
-		return false; 
+		formulario.ra.style.borderColor = "red";
+		valido = false; 
 	}
    
 	/*valida nome*/
     var re = /[a-zA-Z ]*/;
     if (!re.test(nome)) {
-       alert('Nome inválido');  
-	   return false;
+    	formulario.nomeAluno.style.borderColor = "red";
+    	valido = false; 
 	}
 
 	if (!validacaoEmail(email)) {
-		alert('E-mail inválido'); 
-		return false;
+		formulario.emailAluno.style.borderColor = "red";
+		valido = false; 
 	}
 
 	if (!validacaoEmail(responsavel)) {
-		alert('E-mail do responsável inválido'); 
-		return false;
+		formulario.emailResp.style.borderColor = "red";
+		valido = false; 
 	}
 
 
@@ -73,11 +96,11 @@ function validaAluno(formulario) {
     
     formulario.telefoneAluno.value = telefone;
 	if (isNaN(parseFloat(telefone))) {
-       	alert('Telefone inválido');  
-	   return false;
+		formulario.telefoneAluno.style.borderColor = "red";
+		valido = false; 
 	}
 
-	
+	return valido
 }
 
 function validacaoEmail(email) { 
